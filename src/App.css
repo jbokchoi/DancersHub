@@ -1,33 +1,20 @@
 .App {
+  height: 100vh;
+  width: 100vw;
   text-align: center;
+  font-family: "Montserrat", sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Color Theme Swatches in Hex */
+/* .8efb9d571999933eacfb7d7ea1e0c7ec-1-hex { color: #88034A; }
+.8efb9d571999933eacfb7d7ea1e0c7ec-2-hex { color: #FEE6E2; }
+.8efb9d571999933eacfb7d7ea1e0c7ec-3-hex { color: #082C44; }
+.8efb9d571999933eacfb7d7ea1e0c7ec-4-hex { color: #72EAF5; }
+.8efb9d571999933eacfb7d7ea1e0c7ec-5-hex { color: #FFA94C; } */
+/* 
+/* Color Theme Swatches in RGBA */
+/* .8efb9d571999933eacfb7d7ea1e0c7ec-1-rgba { color: rgba(136, 3, 74, 1); }
+.8efb9d571999933eacfb7d7ea1e0c7ec-2-rgba { color: rgba(254, 230, 226, 1); }
+.8efb9d571999933eacfb7d7ea1e0c7ec-3-rgba { color: rgba(8, 44, 68, 1); }
+.8efb9d571999933eacfb7d7ea1e0c7ec-4-rgba { color: rgba(114, 234, 245, 1); }
+.8efb9d571999933eacfb7d7ea1e0c7ec-5-rgba { color: rgba(255, 169, 76, 1); } */
