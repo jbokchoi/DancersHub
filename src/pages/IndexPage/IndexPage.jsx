@@ -5,11 +5,16 @@ import "./IndexPage.css";
 import NavBar from "../../components/NavBar/NavBar";
 
 class IndexPage extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: props.user
+    };
+  }
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar handleLogOut={this.props.handleLogOut} />
         <h1>Main IndexPage</h1>
       </div>
     );

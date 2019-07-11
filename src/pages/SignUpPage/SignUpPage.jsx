@@ -16,6 +16,7 @@ class SignUpPage extends Component {
     return (
       <div className="SignUpPage">
         <h1>Sign Up Page</h1>
+        <SignUpForm {...this.props} />
       </div>
     );
   }
