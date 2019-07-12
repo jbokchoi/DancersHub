@@ -9,6 +9,7 @@ require("dotenv").config();
 require("./config/database");
 
 var apiRouter = require("./routes/api");
+var newsPostsRouter = require("./routes/newsPosts");
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use("/api", apiRouter);
 
 // THIS middleware needs to be before any api that needs to be behind a user wall
 app.use(require("./config/auth"));
+app.use(require("/newsPosts", newsPostsRouter));
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

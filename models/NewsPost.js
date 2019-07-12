@@ -8,26 +8,18 @@ var NewsPostSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    comments: [CommentSchema],
-    postedByMember: { type: Schema.Types.ObjectId, ref: "MemberProfile" },
-    postedByCompany: {
-      type: Schema.Types.ObjectId,
-      ref: "CompanyMemberProfile"
-    }
+    // comments: [commentSchema],
+    postedByUser: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
   },
   {
     timestamps: true
   }
 );
 
-var CommentSchema = new mongoose.Schema(
+var commentSchema = new mongoose.Schema(
   {
     body: String,
-    postedByMember: { type: Schema.Types.ObjectId, ref: "MemberProfile" },
-    postedByCompany: {
-      type: Schema.Types.ObjectId,
-      ref: "CompanyMemberProfile"
-    }
+    postedByUser: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
   },
   {
     timestamps: true

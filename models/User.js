@@ -3,12 +3,14 @@ const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 6;
 
-var userSchema = new mongoose.Schema(
+var Schema = mongoose.Schema;
+
+var userSchema = new Schema(
   {
     name: String,
     email: { type: String, required: true, lowercase: true, unique: true },
-    password: String
-    // memberProfile: MemberProfileSchema
+    password: String,
+    profile: { type: [profileSchema] }
   },
   {
     timestamps: true
@@ -38,60 +40,70 @@ userSchema.methods.comparePassword = function(tryPassword, cb) {
   bcrypt.compare(tryPassword, this.password, cb);
 };
 
-// var MemberProfileSchema = new mongoose.Schema(
-//   {
-//     about: String,
-//     professionalAreas: {
-//       type: String,
-//       enum: [
-//         "Dancer",
-//         "Choreographer",
-//         "Movement Director",
-//         "Mass Movement",
-//         "Dance Teacher",
-//         "Dance Lecturer",
-//         "Somatic Practitioner",
-//         "Healthcare Practitioner",
-//         "Dance Scientist",
-//         "Dance Critic",
-//         "Dance Admin",
-//         "Dance Management"
-//       ]
-//     },
-//     gender: {
-//       type: String,
-//       enum: ["female", "male", "other", "prefer not to say"]
-//     },
-//     jobTitle: String,
-//     location: {
-//       city: String,
-//       country: String
-//     },
-//     contactDetails: [{ type: Schema.Types.ObjectId, ref: "ContactDetail" }],
-//     qualifications: [QualificationSchema],
-//     employment: [EmploymentSchema],
-//     followedMembers: [{ type: Schema.Types.ObjectId, ref: "MemberProfile" }],
-//     followedCompanies: [
-//       { type: Schema.Types.ObjectId, ref: "CompanyMemberProfile" }
-//     ]
-//   },
-//   {
-//     timestamps: true
-//   }
-// );
+var profileSchema = new Schema(
+  {
+    about: String,
+    professionalAreas: [
+      {
+        type: String,
+        enum: [
+          "Dancer",
+          "Choreographer",
+          "Movement Director",
+          "Mass Movement",
+          "Dance Teacher",
+          "Dance Lecturer",
+          "Somatic Practitioner",
+          "Healthcare Practitioner",
+          "Dance Scientist",
+          "Dance Critic",
+          "Dance Admin",
+          "Dance Management"
+        ]
+      }
+    ],
+    gender: {
+      type: String,
+      enum: ["female", "male", "other", "prefer not to say"]
+    },
+    jobTitle: String,
+    location: {
+      city: String,
+      country: String
+    },
+    contactDetails: { type: [contactDetailSchema] },
+    qualifications: { type: [qualificationSchema] },
+    employment: { type: [employmentSchema] },
+    following: [{ type: Schema.Types.ObjectId, ref: "User" }]
+  },
+  {
+    timestamps: true
+  }
+);
 
-// var QualificationSchema = new mongoose.Schema({
-//   schoolOrAcademicProgramme: String,
-//   gradYear: Number,
-//   location: String
-// });
+var contactDetailSchema = new Schema({
+  name: {
+    type: String,
+    default: "website"
+  },
+  link: String,
+  phoneNumber: Number,
+  address: String,
+  postalCode: String
+});
 
-// var EmploymentSchema = new mongoose.Schema({
-//   yearFrom: Number,
-//   yearTo: Number,
-//   nameOfCompany: String,
-//   jobTitle: String,
-//   location: String
-// });
+var qualificationSchema = new Schema({
+  schoolOrAcademicProgramme: String,
+  gradYear: Number,
+  location: String
+});
+
+var employmentSchema = new Schema({
+  yearFrom: Number,
+  yearTo: Number,
+  nameOfCompany: String,
+  jobTitle: String,
+  location: String
+});
 
 module.exports = mongoose.model("User", userSchema);

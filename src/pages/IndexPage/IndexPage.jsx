@@ -16,6 +16,9 @@ class IndexPage extends Component {
       <div>
         <NavBar handleLogOut={this.props.handleLogOut} />
         <h1>Main IndexPage</h1>
+        <h2>hi</h2>
+        <h3>{this.state.user.name}</h3>
+        {console.log(this.state.user)}
       </div>
     );
   }

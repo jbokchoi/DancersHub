@@ -11,6 +11,7 @@ import IndexPage from "./pages/IndexPage/IndexPage";
 import WhosWhoPage from "./pages/WhosWhoPage/WhosWhoPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import ProfileCreatePage from "./pages/ProfileCreatePage/ProfileCreatePage";
 import CreateNews from "./components/CreateNews/CreateNews";
 import ShowNews from "./components/ShowNews/ShowNews";
 import EditNews from "./components/EditNews/EditNews";
@@ -77,7 +78,51 @@ class App extends Component {
           />
           <Route exact path="/whoswho" render={() => <WhosWhoPage />} />
           <Route exact path="/news" render={() => <NewsPage />} />
-          <Route exact path="/profile" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/profile"
+            render={props =>
+              userService.getUser() ? (
+                <ProfilePage
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/createProfile"
+            render={props =>
+              userService.getUser() ? (
+                <ProfileCreatePage
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/news"
+            render={props =>
+              userService.getUser() ? (
+                <NewsPage
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
           {/* <Route exact path="/createnews" component={CreateNews} /> */}
           <Route
             exact
