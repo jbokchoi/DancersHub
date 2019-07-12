@@ -1,18 +1,45 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+// import { getPost, editPost } from "../services/api";
 import userService from "../../utils/userService";
+import tokenService from "../../utils/tokenService";
 
-class ProfileForm extends Component {
+class EditProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: props.user,
+      id: "",
       about: "",
-      gender: "female",
+      gender: "",
       jobTitle: "",
       location: { city: "", country: "" }
     };
   }
+
+  componentDidMount() {
+    var id = tokenService.getUserFromToken()._id;
+    var self = this;
+
+    userService.getProfile(id).then(function(user) {
+      self.setState({
+        id: user.profile[0]._id,
+        about: user.profile[0].about,
+        gender: user.profile[0].gender,
+        jobTitle: user.profile[0].jobTitle,
+        location: {
+          city: user.profile[0].location.city,
+          country: user.profile[0].location.country
+        }
+      });
+    });
+  }
+
+  handleSubmit = e => {
+    var self = this;
+    e.preventDefault();
+    userService.editProfile(this.state).then(function(json) {
+      window.location = `/profile/${self.state.id}`;
+    });
+  };
 
   handleAbout = e => {
     this.setState({ about: e.target.value });
@@ -34,17 +61,11 @@ class ProfileForm extends Component {
     });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log("handle submit profile hit");
-    userService.createProfile(this.state).then(function() {
-      window.location = "/profile";
-    });
-  };
-
   render() {
     return (
       <div>
+        <h1>Edit Profile</h1>
+        <hr />
         <form onSubmit={this.handleSubmit}>
           <label>About</label>
           <textarea onChange={this.handleAbout} value={this.state.about} />
@@ -73,11 +94,11 @@ class ProfileForm extends Component {
             value={this.state.location.country}
             onChange={this.handleLocation}
           />
-          <button className="btn btn-default">Sign Up</button>
+          <button className="btn btn-default">Submit Edit</button>
         </form>
       </div>
     );
   }
 }
 
-export default ProfileForm;
+export default EditProfilePage;

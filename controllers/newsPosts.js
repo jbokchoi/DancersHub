@@ -32,13 +32,15 @@ function getOneNewsPost(req, res) {
 }
 
 function createNewsPost(req, res) {
+  console.log("create controller hit");
   newsPost.create(req.body).then(function(newsPost) {
     res.status(201).json(newsPost);
   });
 }
 
 function getAllNewsPosts(req, res) {
-  Post.find({}).then(function(newsPosts) {
+  console.log("HELLO");
+  newsPost.find({}).then(function(newsPosts) {
     console.log(newsPosts);
     res.status(200).json(newsPosts);
   });

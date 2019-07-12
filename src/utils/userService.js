@@ -45,9 +45,46 @@ function login(creds) {
     .then(({ token }) => tokenService.setToken(token));
 }
 
+function createProfile(user) {
+  console.log("create profile service hit");
+  return fetch(BASE_URL + `user`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(user)
+  });
+}
+
+function getProfile(user) {
+  console.log("profile retrieved");
+  return fetch(BASE_URL + "user", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json(user);
+  });
+}
+
+function editProfile(user) {
+  console.log("edit service hit")
+  return fetch(BASE_URL + `user/${profile.id}`,{
+    method: "PUT",
+    body: JSON.stringify(user)
+    }),
+    headers: 
+  })
+}
+
 export default {
   signup,
   getUser,
   logout,
-  login
+  login,
+  createProfile,
+  getProfile
 };

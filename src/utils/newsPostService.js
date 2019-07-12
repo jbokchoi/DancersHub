@@ -1,6 +1,6 @@
 // index
 export function getNewsPosts() {
-  return fetch(`/`).then(function(res) {
+  return fetch(`/newsPosts`).then(function(res) {
     return res.json();
   });
 }
@@ -14,7 +14,8 @@ export function getNewsPost(id) {
 
 // create
 export function createNewsPost(newsPost) {
-  return fetch("/", {
+  console.log("create news post hit");
+  return fetch("/newsPosts", {
     method: "POST",
     body: JSON.stringify({
       title: newsPost.title,
@@ -28,7 +29,7 @@ export function createNewsPost(newsPost) {
 
 // edit
 export function editNewsPost(newsPost) {
-  return fetch(`/api/newsPosts/${newsPost.id}`, {
+  return fetch(`/newsPosts/${newsPost.id}`, {
     method: "PUT",
     body: JSON.stringify({
       title: newsPost.title,
@@ -42,7 +43,7 @@ export function editNewsPost(newsPost) {
 
 // delete
 export function deleteNewsPost(id) {
-  return fetch(`/api/newsPosts/${id}`, {
+  return fetch(`/newsPosts/${id}`, {
     method: "delete"
   }).then(function(res) {
     return res.json();
@@ -52,7 +53,7 @@ export function deleteNewsPost(id) {
 // upvote/downvote posts
 export function upvoteNewsPost(id, type) {
   var type = type === "downvote" ? "downvote" : "upvote";
-  return fetch(`/api/newsPosts/${id}/${type}`, {
+  return fetch(`/newsPosts/${id}/${type}`, {
     method: "PUT",
     body: JSON.stringify({
       upvotes: 1
@@ -65,7 +66,7 @@ export function upvoteNewsPost(id, type) {
 
 // add a comment to post
 export function addComment(newsPostId, comment) {
-  return fetch(`/api/newsPosts/${newsPostId}/comments`, {
+  return fetch(`/newsPosts/${newsPostId}/comments`, {
     method: "POST",
     body: JSON.stringify({
       body: comment

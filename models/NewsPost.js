@@ -1,6 +1,17 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var NewsPostSchema = new mongoose.Schema(
+const commentSchema = new Schema(
+  {
+    body: String,
+    postedByUser: { type: Schema.Types.ObjectId, ref: "User" }
+  },
+  {
+    timestamps: true
+  }
+);
+
+const NewsPostSchema = new Schema(
   {
     title: String,
     body: String,
@@ -8,18 +19,8 @@ var NewsPostSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    // comments: [commentSchema],
-    postedByUser: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
-  },
-  {
-    timestamps: true
-  }
-);
-
-var commentSchema = new mongoose.Schema(
-  {
-    body: String,
-    postedByUser: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+    comments: [commentSchema],
+    postedByUser: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
     timestamps: true

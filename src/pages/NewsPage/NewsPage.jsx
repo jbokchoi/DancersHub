@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getNewsPosts, upvoteNewsPost } from "../../utils/newsPostService";
-import { Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./NewsPage.css";
 
 import NavBar from "../../components/NavBar/NavBar";

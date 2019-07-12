@@ -12,7 +12,7 @@ import WhosWhoPage from "./pages/WhosWhoPage/WhosWhoPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileCreatePage from "./pages/ProfileCreatePage/ProfileCreatePage";
-import CreateNews from "./components/CreateNews/CreateNews";
+import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import ShowNews from "./components/ShowNews/ShowNews";
 import EditNews from "./components/EditNews/EditNews";
 
@@ -110,6 +110,21 @@ class App extends Component {
           />
           <Route
             exact
+            path="/editProfile"
+            render={props =>
+              userService.getUser() ? (
+                <EditProfilePage
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
+            exact
             path="/news"
             render={props =>
               userService.getUser() ? (
@@ -123,7 +138,6 @@ class App extends Component {
               )
             }
           />
-          {/* <Route exact path="/createnews" component={CreateNews} /> */}
           <Route
             exact
             path="/news/:id"

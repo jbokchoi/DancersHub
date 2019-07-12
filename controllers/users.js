@@ -5,7 +5,9 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  createProfile,
+  getProfile
 };
 
 async function signup(req, res) {
@@ -37,6 +39,32 @@ async function login(req, res) {
   } catch (err) {
     return res.status(401).json(err);
   }
+}
+
+/* --- Profile Functions ---- */
+
+function createProfile(req, res) {
+  User.findById(req.user._id).then(function(user) {
+    console.log(user);
+    user.profile.unshift(req.body);
+    user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
+
+function getProfile(req, res) {
+  console.log("WHAT?");
+  User.findById(req.user._id).then(function(user) {
+    return res.status(200).json(user);
+    // if (err) {
+    //   console.log(req.user._id);
+    //   console.log("err", err);
+    //   console.log("WTF");
+    // } else {
+    //   return res.json({ user });
+    // }
+  });
 }
 
 /* --- Helper Functions ---- */

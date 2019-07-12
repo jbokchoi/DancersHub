@@ -4,4 +4,6 @@ var profileController = require("../controllers/profiles");
 
 /* --- GET /api/profile --- */
 
-router.post("/profile", profileController.createProfile);
+router.post("/user/:id/", profileController.createProfile);
+
+module.exports = router;

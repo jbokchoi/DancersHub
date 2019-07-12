@@ -21,6 +21,7 @@ class CreateNews extends Component {
   };
 
   handleSubmit = e => {
+    console.log("create news submit hit");
     e.preventDefault();
     createNewsPost(this.state).then(function() {
       window.location = "/news";

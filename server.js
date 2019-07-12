@@ -27,11 +27,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "build")));
 
 // Put API routes here, before the "catch all" route
-app.use("/api", apiRouter);
 
 // THIS middleware needs to be before any api that needs to be behind a user wall
+app.use("/api", apiRouter);
 app.use(require("./config/auth"));
-app.use(require("/newsPosts", newsPostsRouter));
+app.use("/newsPosts", newsPostsRouter);
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

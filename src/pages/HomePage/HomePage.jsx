@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 
 class HomePage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
   render() {

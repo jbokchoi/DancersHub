@@ -5,40 +5,30 @@ const SALT_ROUNDS = 6;
 
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema(
-  {
-    name: String,
-    email: { type: String, required: true, lowercase: true, unique: true },
-    password: String,
-    profile: { type: [profileSchema] }
+var contactDetailSchema = new Schema({
+  name: {
+    type: String,
+    default: "website"
   },
-  {
-    timestamps: true
-  }
-);
-
-userSchema.set("toJSON", {
-  transform: function(doc, ret) {
-    // remove the password property when serializing doc to JSON
-    delete ret.password;
-    return ret;
-  }
+  link: String,
+  phoneNumber: Number,
+  address: String,
+  postalCode: String
 });
 
-userSchema.pre("save", function(next) {
-  const user = this;
-  if (!user.isModified("password")) return next();
-  // password has been modified, so let's hash it!
-  bcrypt.hash(user.password, SALT_ROUNDS, function(err, hash) {
-    if (err) return next(err);
-    user.password = hash;
-    next();
-  });
+var qualificationSchema = new Schema({
+  schoolOrAcademicProgramme: String,
+  gradYear: Number,
+  location: String
 });
 
-userSchema.methods.comparePassword = function(tryPassword, cb) {
-  bcrypt.compare(tryPassword, this.password, cb);
-};
+var employmentSchema = new Schema({
+  yearFrom: Number,
+  yearTo: Number,
+  nameOfCompany: String,
+  jobTitle: String,
+  location: String
+});
 
 var profileSchema = new Schema(
   {
@@ -71,9 +61,9 @@ var profileSchema = new Schema(
       city: String,
       country: String
     },
-    contactDetails: { type: [contactDetailSchema] },
-    qualifications: { type: [qualificationSchema] },
-    employment: { type: [employmentSchema] },
+    contactDetails: [contactDetailSchema],
+    qualifications: [qualificationSchema],
+    employment: [employmentSchema],
     following: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
   {
@@ -81,29 +71,39 @@ var profileSchema = new Schema(
   }
 );
 
-var contactDetailSchema = new Schema({
-  name: {
-    type: String,
-    default: "website"
+var userSchema = new Schema(
+  {
+    name: String,
+    email: { type: String, required: true, lowercase: true, unique: true },
+    password: String,
+    profile: [profileSchema]
   },
-  link: String,
-  phoneNumber: Number,
-  address: String,
-  postalCode: String
+  {
+    timestamps: true
+  }
+);
+
+userSchema.set("toJSON", {
+  transform: function(doc, ret) {
+    // remove the password property when serializing doc to JSON
+    delete ret.password;
+    return ret;
+  }
 });
 
-var qualificationSchema = new Schema({
-  schoolOrAcademicProgramme: String,
-  gradYear: Number,
-  location: String
+userSchema.pre("save", function(next) {
+  const user = this;
+  if (!user.isModified("password")) return next();
+  // password has been modified, so let's hash it!
+  bcrypt.hash(user.password, SALT_ROUNDS, function(err, hash) {
+    if (err) return next(err);
+    user.password = hash;
+    next();
+  });
 });
 
-var employmentSchema = new Schema({
-  yearFrom: Number,
-  yearTo: Number,
-  nameOfCompany: String,
-  jobTitle: String,
-  location: String
-});
+userSchema.methods.comparePassword = function(tryPassword, cb) {
+  bcrypt.compare(tryPassword, this.password, cb);
+};
 
 module.exports = mongoose.model("User", userSchema);
