@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class WhosWhoPage extends Component {
+class EditNewsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -8,10 +8,10 @@ class WhosWhoPage extends Component {
   render() {
     return (
       <div>
-        <h1>hello from WhosWhoPage</h1>
+        <h1>Hello from Edit News</h1>
       </div>
     );
   }
 }
 
-export default WhosWhoPage;
+export default EditNewsPage;

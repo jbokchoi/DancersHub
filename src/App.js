@@ -13,8 +13,8 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileCreatePage from "./pages/ProfileCreatePage/ProfileCreatePage";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
-import ShowNews from "./components/ShowNews/ShowNews";
-import EditNews from "./components/EditNews/EditNews";
+import ShowNewsPage from "./pages/ShowNewsPage/ShowNewsPage";
+import EditNewsPage from "./pages/EditNewsPage/EditNewsPage";
 
 class App extends Component {
   constructor() {
@@ -143,7 +143,7 @@ class App extends Component {
             path="/news/:id"
             render={props =>
               userService.getUser() ? (
-                <ShowNews
+                <ShowNewsPage
                   {...props}
                   user={this.state.user}
                   handleLogOut={this.handleLogOut}
@@ -156,7 +156,17 @@ class App extends Component {
           <Route
             exact
             path="/news/:id/edit"
-            render={props => <EditNews {...props} />}
+            render={props =>
+              userService.getUser() ? (
+                <EditNewsPage
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
           />
         </Switch>
       </div>
