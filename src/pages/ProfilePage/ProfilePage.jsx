@@ -27,6 +27,7 @@ class ProfilePage extends Component {
       <div>
         <NavBar handleLogOut={this.props.handleLogOut} />
         <h1>hi from profile page</h1>
+        <Link to="/editProfile">Edit Profile</Link>
         <table className="table">
           <tbody>
             <tr>
@@ -51,10 +52,9 @@ class ProfilePage extends Component {
             </tr>
           </tbody>
         </table>
-
         <br />
+
         <hr />
-        <Link to="/editProfile">Edit Profile</Link>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { createNewsPost } from "../../utils/newsPostService";
+import NavBar from "../NavBar/NavBar";
 
 class CreateNews extends Component {
   constructor(props) {

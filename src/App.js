@@ -77,7 +77,7 @@ class App extends Component {
             }
           />
           <Route exact path="/whoswho" render={() => <WhosWhoPage />} />
-          <Route exact path="/news" render={() => <NewsPage />} />
+
           <Route
             exact
             path="/profile"
@@ -140,7 +140,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/news/:id"
+            path="/newsPosts/:id"
             render={props =>
               userService.getUser() ? (
                 <ShowNewsPage
@@ -155,7 +155,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/news/:id/edit"
+            path="/newsPosts/:id/edit"
             render={props =>
               userService.getUser() ? (
                 <EditNewsPage

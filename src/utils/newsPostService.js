@@ -7,7 +7,7 @@ export function getNewsPosts() {
 
 // show
 export function getNewsPost(id) {
-  return fetch(`/${id}`).then(function(res) {
+  return fetch(`/newsPosts/${id}`).then(function(res) {
     return res.json();
   });
 }
