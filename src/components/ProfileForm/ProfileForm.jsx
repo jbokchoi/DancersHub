@@ -10,28 +10,13 @@ class ProfileForm extends Component {
       about: "",
       gender: "female",
       jobTitle: "",
-      location: { city: "", country: "" }
+      city: "",
+      country: ""
     };
   }
 
-  handleAbout = e => {
-    this.setState({ about: e.target.value });
-  };
-
-  handleGender = e => {
-    this.setState({ gender: e.target.value });
-  };
-
-  handleJobTitle = e => {
-    this.setState({ jobTitle: e.target.value });
-  };
-
-  handleLocation = e => {
-    const location = { ...this.state.location };
-    location[e.target.name] = e.target.value;
-    this.setState({
-      location
-    });
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
@@ -47,10 +32,18 @@ class ProfileForm extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>About</label>
-          <textarea onChange={this.handleAbout} value={this.state.about} />
+          <textarea
+            onChange={this.handleChange}
+            name="about"
+            value={this.state.about}
+          />
 
           <label>Gender</label>
-          <select value={this.state.gender} onChange={this.handleGender}>
+          <select
+            value={this.state.gender}
+            onChange={this.handleChange}
+            name="gender"
+          >
             <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="other">Other</option>
@@ -58,20 +51,23 @@ class ProfileForm extends Component {
           </select>
 
           <label>Job Title</label>
-          <input value={this.state.jobTitle} onChange={this.handleJobTitle} />
+          <input
+            value={this.state.jobTitle}
+            onChange={this.handleChange}
+            name="jobTitle"
+          />
 
-          <label>Location</label>
           <label>City</label>
           <input
             name="city"
-            value={this.state.location.city}
-            onChange={this.handleLocation}
+            value={this.state.city}
+            onChange={this.handleChange}
           />
           <label>Country</label>
           <input
             name="country"
-            value={this.state.location.country}
-            onChange={this.handleLocation}
+            value={this.state.country}
+            onChange={this.handleChange}
           />
           <button className="btn btn-default">Sign Up</button>
         </form>

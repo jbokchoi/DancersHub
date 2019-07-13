@@ -8,6 +8,7 @@ module.exports = {
   login,
   createProfile,
   getProfile
+  // editProfile
 };
 
 async function signup(req, res) {
@@ -66,6 +67,14 @@ function getProfile(req, res) {
     // }
   });
 }
+
+// function editProfile(req, res) {
+//   User.profile
+//     .findByIdAndUpdate(req.user._id, req.body, { new: true })
+//     .then(function(user) {
+//       return res.status(200).json(user);
+//     });
+// }
 
 /* --- Helper Functions ---- */
 

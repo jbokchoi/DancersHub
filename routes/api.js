@@ -10,7 +10,7 @@ router.post("/login", usersController.login);
 router.use(require("../config/auth"));
 router.get("/user", checkAuth, usersController.getProfile);
 router.post("/user", checkAuth, usersController.createProfile);
-// router.put("/user/:id", checkAuth, usersController.updateProfile);
+// router.put("/user", checkAuth, usersController.updateProfile);
 
 function checkAuth(req, res, next) {
   if (req.user) return next();

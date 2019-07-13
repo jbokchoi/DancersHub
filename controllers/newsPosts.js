@@ -26,6 +26,7 @@ function deleteNewsPost(req, res) {
 }
 
 function getOneNewsPost(req, res) {
+  console.log("got a news story!");
   newsPost.findById(req.params.id).then(function(newsPost) {
     res.status(200).json(newsPost);
   });

@@ -19,7 +19,7 @@ var contactDetailSchema = new Schema({
 var qualificationSchema = new Schema({
   schoolOrAcademicProgramme: String,
   gradYear: Number,
-  location: String
+  qualificationLocation: String
 });
 
 var employmentSchema = new Schema({
@@ -27,7 +27,7 @@ var employmentSchema = new Schema({
   yearTo: Number,
   nameOfCompany: String,
   jobTitle: String,
-  location: String
+  employmentLocation: String
 });
 
 var profileSchema = new Schema(
@@ -57,10 +57,8 @@ var profileSchema = new Schema(
       enum: ["female", "male", "other", "prefer not to say"]
     },
     jobTitle: String,
-    location: {
-      city: String,
-      country: String
-    },
+    city: String,
+    country: String,
     contactDetails: [contactDetailSchema],
     qualifications: [qualificationSchema],
     employment: [employmentSchema],

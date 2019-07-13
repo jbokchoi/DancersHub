@@ -58,7 +58,6 @@ function createProfile(user) {
 }
 
 function getProfile(user) {
-  console.log("profile retrieved");
   return fetch(BASE_URL + "user", {
     method: "GET",
     headers: {
@@ -70,15 +69,19 @@ function getProfile(user) {
   });
 }
 
-function editProfile(user) {
-  console.log("edit service hit")
-  return fetch(BASE_URL + `user/${profile.id}`,{
-    method: "PUT",
-    body: JSON.stringify(user)
-    }),
-    headers: 
-  })
-}
+// function editProfile(user) {
+//   console.log("edit service hit");
+//   return fetch(BASE_URL + `user`, {
+//     method: "PUT",
+//     body: JSON.stringify({ user }),
+//     headers: {
+//       "Content-type": "application/json",
+//       Authorization: "Bearer " + tokenService.getToken()
+//     }
+//   }).then(function(res) {
+//     return res.json(user);
+//   });
+// }
 
 export default {
   signup,
@@ -87,4 +90,5 @@ export default {
   login,
   createProfile,
   getProfile
+  // editProfile
 };

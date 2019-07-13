@@ -141,7 +141,17 @@ class App extends Component {
           <Route
             exact
             path="/news/:id"
-            render={props => <ShowNews {...props} />}
+            render={props =>
+              userService.getUser() ? (
+                <ShowNews
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
           />
           <Route
             exact

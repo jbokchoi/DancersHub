@@ -16,7 +16,7 @@ class ProfilePage extends Component {
     var self = this;
     userService.getProfile().then(function(json) {
       console.log(json);
-      console.log(json.profile[0].about);
+      console.log(json.profile[0]);
       self.setState({ profile: json.profile[0] });
     });
   }
@@ -28,26 +28,28 @@ class ProfilePage extends Component {
         <NavBar handleLogOut={this.props.handleLogOut} />
         <h1>hi from profile page</h1>
         <table className="table">
-          <tr>
-            <th>About</th>
-            <td>{this.state.profile.about}</td>
-          </tr>
-          <tr>
-            <th>Gender</th>
-            <td>{this.state.profile.gender}</td>
-          </tr>
-          <tr>
-            <th>Job Title</th>
-            <td>{this.state.profile.jobTitle}</td>
-          </tr>
-          {/* <tr>
-            <th>City</th>
-            <td>{this.state.profile.location.city}</td>
-          </tr>
-          <tr>
-            <th>Country</th>
-            <td>{this.state.location.country}</td>
-          </tr> */}
+          <tbody>
+            <tr>
+              <th>About</th>
+              <td>{this.state.profile.about}</td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <td>{this.state.profile.gender}</td>
+            </tr>
+            <tr>
+              <th>Job Title</th>
+              <td>{this.state.profile.jobTitle}</td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td>{this.state.profile.city}</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <td>{this.state.profile.country}</td>
+            </tr>
+          </tbody>
         </table>
 
         <br />

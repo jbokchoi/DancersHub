@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-// import { getPost, editPost } from "../services/api";
+
 import userService from "../../utils/userService";
 import tokenService from "../../utils/tokenService";
+
+import NavBar from "../../components/NavBar/NavBar";
 
 class EditProfilePage extends Component {
   constructor(props) {
@@ -11,7 +13,8 @@ class EditProfilePage extends Component {
       about: "",
       gender: "",
       jobTitle: "",
-      location: { city: "", country: "" }
+      city: "",
+      country: ""
     };
   }
 
@@ -25,10 +28,8 @@ class EditProfilePage extends Component {
         about: user.profile[0].about,
         gender: user.profile[0].gender,
         jobTitle: user.profile[0].jobTitle,
-        location: {
-          city: user.profile[0].location.city,
-          country: user.profile[0].location.country
-        }
+        city: user.profile[0].city,
+        country: user.profile[0].country
       });
     });
   }
@@ -41,37 +42,30 @@ class EditProfilePage extends Component {
     });
   };
 
-  handleAbout = e => {
-    this.setState({ about: e.target.value });
-  };
-
-  handleGender = e => {
-    this.setState({ gender: e.target.value });
-  };
-
-  handleJobTitle = e => {
-    this.setState({ jobTitle: e.target.value });
-  };
-
-  handleLocation = e => {
-    const location = { ...this.state.location };
-    location[e.target.name] = e.target.value;
-    this.setState({
-      location
-    });
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
     return (
       <div>
+        <NavBar />
         <h1>Edit Profile</h1>
         <hr />
         <form onSubmit={this.handleSubmit}>
           <label>About</label>
-          <textarea onChange={this.handleAbout} value={this.state.about} />
+          <textarea
+            onChange={this.handleChange}
+            value={this.state.about}
+            name="about"
+          />
 
           <label>Gender</label>
-          <select value={this.state.gender} onChange={this.handleGender}>
+          <select
+            value={this.state.gender}
+            onChange={this.handleChange}
+            name="gender"
+          >
             <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="other">Other</option>
@@ -79,20 +73,23 @@ class EditProfilePage extends Component {
           </select>
 
           <label>Job Title</label>
-          <input value={this.state.jobTitle} onChange={this.handleJobTitle} />
+          <input
+            value={this.state.jobTitle}
+            onChange={this.handleChange}
+            name="jobTitle"
+          />
 
-          <label>Location</label>
           <label>City</label>
           <input
             name="city"
-            value={this.state.location.city}
-            onChange={this.handleLocation}
+            value={this.state.city}
+            onChange={this.handleChange}
           />
           <label>Country</label>
           <input
             name="country"
-            value={this.state.location.country}
-            onChange={this.handleLocation}
+            value={this.state.country}
+            onChange={this.handleChange}
           />
           <button className="btn btn-default">Submit Edit</button>
         </form>
