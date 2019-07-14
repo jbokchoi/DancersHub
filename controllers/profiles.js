@@ -1,10 +1,10 @@
 const User = require("../models/User");
 
 module.exports = {
-  // addProfArea,
-  // addContactDetail,
-  // addQualification,
-  // addEmployment,
+  createProfArea
+  // createContactDetail,
+  // createQualification,
+  // createEmployment,
   // editQualification,
   // editEmployment,
   // deleteProfArea,
@@ -15,14 +15,19 @@ module.exports = {
 
 /*---- Profesional Areas Function ----*/
 
-// function addProfArea(req, res) {
-//   User.findById(req.user._id).then(function(user) {
-//     user.profile[0].professionalAreas.unshift(req.body);
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function createProfArea(req, res) {
+  console.log("userid", req.user._id);
+  console.log("data sent", req.body);
+  User.findById(req.user._id).then(function(user) {
+    console.log("userfound: ", user.profile[0].professionalAreas);
+    user.profile[0].professionalAreas.push(req.body);
+    console.log("user changed ");
+    return user.save(function(user) {
+      console.log("nwe user", user);
+      res.status(200).json(user);
+    });
+  });
+}
 
 // function deleteProfArea(req, res) {
 //   User.findById(req.params.userId).then(function(user) {
@@ -35,7 +40,7 @@ module.exports = {
 
 /*---- Contact Details Function ----*/
 
-// function addContactDetail(req, res) {
+// function createContactDetail(req, res) {
 //   User.findById(req.user._id).then(function(user) {
 //     user.profile[0].contactDetails.unshift(req.body);
 //     user.save(function(user) {
@@ -55,7 +60,7 @@ module.exports = {
 
 /*---- Qualifications Function ----*/
 
-// function addQualification(req, res) {
+// function createQualification(req, res) {
 //   User.findById(req.user._id).then(function(user) {
 //     user.profile[0].qualifications.unshift(req.body);
 //     user.save(function(user) {
@@ -83,7 +88,7 @@ module.exports = {
 
 /*---- Employment Function ----*/
 
-// function addEmployment(req, res) {
+// function createEmployment(req, res) {
 //   User.findById(req.user._id).then(function(user) {
 //     user.profile[0].employment.unshift(req.body);
 //     user.save(function(user) {

@@ -37,21 +37,23 @@ var employmentSchema = new Schema({
 });
 
 var professionalAreasSchema = new Schema({
-  type: String,
-  enum: [
-    "Dancer",
-    "Choreographer",
-    "Movement Director",
-    "Mass Movement",
-    "Dance Teacher",
-    "Dance Lecturer",
-    "Somatic Practitioner",
-    "Healthcare Practitioner",
-    "Dance Scientist",
-    "Dance Critic",
-    "Dance Admin",
-    "Dance Management"
-  ]
+  profAreas: {
+    type: String,
+    enum: [
+      "Dancer",
+      "Choreographer",
+      "Movement Director",
+      "Mass Movement",
+      "Dance Teacher",
+      "Dance Lecturer",
+      "Somatic Practitioner",
+      "Healthcare Practitioner",
+      "Dance Scientist",
+      "Dance Critic",
+      "Dance Admin",
+      "Dance Management"
+    ]
+  }
 });
 
 var profileSchema = new Schema(

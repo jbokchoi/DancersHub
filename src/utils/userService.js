@@ -18,8 +18,6 @@ function signup(user) {
       // Parameter destructuring!
       .then(({ token }) => tokenService.setToken(token))
   );
-  // The above could have been written as
-  //.then((token) => token.token);
 }
 
 function getUser() {
@@ -44,6 +42,8 @@ function login(creds) {
     })
     .then(({ token }) => tokenService.setToken(token));
 }
+
+/*--- Profile related functions --- */
 
 function createProfile(user) {
   console.log("create profile service hit");

@@ -14,16 +14,19 @@ const BASE_URL = "/api/";
 
 // add professional area
 
-// export function addProfArea(user, profile) {
-//   return fetch(BASE_URL + `user/profile/profArea`, {
-//     method: "POST",
-//     headers: {
-//       "Content-type": "application/json",
-//       Authorization: "Bearer " + tokenService.getToken()
-//     },
-//     body: JSON.stringify(user)
-//   });
-// }
+export function addProfArea(user) {
+  console.log("user: ", user);
+  return fetch(BASE_URL + `user/profile/profArea`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(user)
+  }).then(function(res) {
+    return res.json();
+  });
+}
 
 //delete professional area
 

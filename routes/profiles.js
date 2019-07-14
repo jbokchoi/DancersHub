@@ -9,7 +9,11 @@ var profileController = require("../controllers/profiles");
 // router.get("/user/profile/employment", checkAuth, profileController.getEmployment);
 
 /* --- POST --- */
-// router.post("/user/profile/profArea", checkAuth, profileController.createProfArea);
+router.post(
+  "/user/profile/profArea",
+  checkAuth,
+  profileController.createProfArea
+);
 // router.post("/user/profile/contactDetails", checkAuth, profileController.createContactDetail);
 // router.post("/user/profile/qualifications", checkAuth, profileController.createQualification);
 // router.post("/user/profile/employment", checkAuth, profileController.createEmployment);
@@ -23,9 +27,6 @@ var profileController = require("../controllers/profiles");
 // router.delete("/user/profile/contactDetails/:id", checkAuth, profileController.deleteContactDetail);
 // router.delete("/user/profile/qualifications/:id", checkAuth, profileController.deleteQualification);
 // router.delete("/user/profile/employment/:id", checkAuth, profileController.deleteEmployment);
-
-router.post("/user/:id/", profileController.createProfile);
-// router.get("/user/profile/profArea", checkAuth, usersController);
 
 function checkAuth(req, res, next) {
   if (req.user) return next();

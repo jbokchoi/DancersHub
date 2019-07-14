@@ -1,16 +1,33 @@
 import React, { Component } from "react";
+import { addProfArea } from "../../utils/profileService";
 
 class ProfAreas extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profAreas: [],
-      newProfArea: ""
+      profAreas: []
+      // newProfArea: ""
     };
   }
 
+  componentDidMount = e => {
+    console.log("component mounted", this.state);
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log("pre add", this.state);
+    addProfArea(this.state).then(function() {
+      // console.log("post add", this.state);
+      window.location = "/profile";
+    });
+  };
+
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    console.log("pre change", e.target.name);
+    console.log("pre change", e.target.value);
+    this.setState({ profAreas: [].push(this.state) });
+    console.log(this.state);
   };
 
   render() {
@@ -23,8 +40,8 @@ class ProfAreas extends Component {
           <br />
           <select
             onChange={this.handleChange}
-            value={this.state.newProfArea}
-            name="newProfArea"
+            value={this.state.profArea}
+            name="profArea"
           >
             <option value="Dancer">Dancer</option>
             <option value="Choreographer">Choreographer</option>
