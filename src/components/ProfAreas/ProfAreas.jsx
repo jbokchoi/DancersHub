@@ -5,7 +5,7 @@ class ProfAreas extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profAreas: []
+      profArea: ""
       // newProfArea: ""
     };
   }
@@ -26,7 +26,7 @@ class ProfAreas extends Component {
   handleChange = e => {
     console.log("pre change", e.target.name);
     console.log("pre change", e.target.value);
-    this.setState({ profAreas: [].push(this.state) });
+    this.setState({ profArea: e.target.value });
     console.log(this.state);
   };
 

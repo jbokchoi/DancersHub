@@ -37,7 +37,7 @@ var employmentSchema = new Schema({
 });
 
 var professionalAreasSchema = new Schema({
-  profAreas: {
+  profArea: {
     type: String,
     enum: [
       "Dancer",

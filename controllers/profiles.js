@@ -23,7 +23,7 @@ function createProfArea(req, res) {
     user.profile[0].professionalAreas.push(req.body);
     console.log("user changed ");
     return user.save(function(user) {
-      console.log("nwe user", user);
+      // console.log("nwe user", user);
       res.status(200).json(user);
     });
   });
