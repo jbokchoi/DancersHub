@@ -58,13 +58,6 @@ function getProfile(req, res) {
   console.log("WHAT?");
   User.findById(req.user._id).then(function(user) {
     return res.status(200).json(user);
-    // if (err) {
-    //   console.log(req.user._id);
-    //   console.log("err", err);
-    //   console.log("WTF");
-    // } else {
-    //   return res.json({ user });
-    // }
   });
 }
 

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import userService from "../../utils/userService";
+import ProfAreas from "../../components/ProfAreas/ProfAreas";
+import ContactDetails from "../../components/ContactDetails/ContactDetails";
+import Qualifications from "../../components/Qualifications/Qualifications";
+import Employment from "../../components/Employment/Employment";
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -53,7 +57,16 @@ class ProfilePage extends Component {
           </tbody>
         </table>
         <br />
-
+        <ProfAreas />
+        <br />
+        <hr />
+        <ContactDetails />
+        <br />
+        <hr />
+        <Qualifications />
+        <br />
+        <hr />
+        <Employment />
         <hr />
       </div>
     );

@@ -4,6 +4,7 @@ import {
   addComment,
   upvoteNewsPost,
   deleteNewsPost
+  // deleteComment
 } from "../../utils/newsPostService";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
@@ -15,10 +16,12 @@ class ShowNewsPage extends Component {
       id: "",
       title: "",
       body: "",
-      // postedByUser: "",
+      postedByUser: "",
       postedOn: "",
       comments: [],
       commentBody: "",
+      commentedOn: "",
+      commentPostedBy: props.user,
       upvotes: ""
     };
   }
@@ -33,10 +36,11 @@ class ShowNewsPage extends Component {
         id: newsPost._id,
         title: newsPost.title,
         body: newsPost.body,
-        // postedByUser: newsPost.
+        postedByUser: newsPost.postedByUser,
         postedOn: newsPost.createdAt,
         comments: newsPost.comments,
         commentBody: "",
+        commentedOn: newsPost.comments.createdAt,
         upvotes: newsPost.upvotes
       });
     });
@@ -45,7 +49,11 @@ class ShowNewsPage extends Component {
   handleSubmit = e => {
     var self = this;
     e.preventDefault();
-    addComment(this.state.id, this.state.commentBody).then(function(json) {
+    addComment(
+      this.state.id,
+      this.state.commentBody,
+      this.state.commentPostedBy
+    ).then(function(json) {
       getNewsPost(self.state.id).then(function(newsPost) {
         self.setState({
           id: newsPost._id,
@@ -103,9 +111,23 @@ class ShowNewsPage extends Component {
     });
   };
 
+  // handleCommentDelete = idx => {
+  //   deleteComment(idx).then(function(json) {
+  //     window.location = `/news/${newsPost._id}`;
+  //   });
+  // };
+
   render() {
     var comments = this.state.comments.map((comment, idx) => {
-      return <li key={idx}>{comment.body}</li>;
+      return (
+        <li key={idx}>
+          <h4>Comment:</h4>
+          <p>{comment.body}</p>
+          <p>Commented On:</p>
+          {comment.createdAt}
+          <button>x</button>
+        </li>
+      );
     });
     return (
       <div>
@@ -113,7 +135,8 @@ class ShowNewsPage extends Component {
         <h2>{this.state.title}</h2>
         <br />
         <p>{this.state.body}</p>
-        <p>{this.state.postedOn}</p>
+        <p>Posted by:{this.state.postedByUser.name}</p>
+        <p>Posted on:{this.state.postedOn}</p>
         <Link
           to={`/newsPosts/${this.state.id}/edit`}
           className="btn btn-secondary"
@@ -167,6 +190,11 @@ class ShowNewsPage extends Component {
             value={this.state.CommentBody}
           />
           <br />
+          <input
+            type="hidden"
+            value={this.state.commentPostedBy}
+            name="postedByUser"
+          />
           <input type="submit" value="Add Comment" className="btn btn-dark" />
         </form>
       </div>

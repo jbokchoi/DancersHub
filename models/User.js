@@ -10,48 +10,53 @@ var contactDetailSchema = new Schema({
     type: String,
     default: "website"
   },
-  link: String,
-  phoneNumber: Number,
-  address: String,
-  postalCode: String
+  link: String
 });
 
 var qualificationSchema = new Schema({
   schoolOrAcademicProgramme: String,
-  gradYear: Number,
+  gradYear: {
+    type: Number,
+    match: /\d{4}/
+  },
   qualificationLocation: String
 });
 
 var employmentSchema = new Schema({
-  yearFrom: Number,
-  yearTo: Number,
+  yearFrom: {
+    type: Number,
+    match: /\d{4}/
+  },
+  yearTo: {
+    type: Number,
+    match: /\d{4}/
+  },
   nameOfCompany: String,
   jobTitle: String,
   employmentLocation: String
 });
 
+var professionalAreasSchema = new Schema({
+  type: String,
+  enum: [
+    "Dancer",
+    "Choreographer",
+    "Movement Director",
+    "Mass Movement",
+    "Dance Teacher",
+    "Dance Lecturer",
+    "Somatic Practitioner",
+    "Healthcare Practitioner",
+    "Dance Scientist",
+    "Dance Critic",
+    "Dance Admin",
+    "Dance Management"
+  ]
+});
+
 var profileSchema = new Schema(
   {
     about: String,
-    professionalAreas: [
-      {
-        type: String,
-        enum: [
-          "Dancer",
-          "Choreographer",
-          "Movement Director",
-          "Mass Movement",
-          "Dance Teacher",
-          "Dance Lecturer",
-          "Somatic Practitioner",
-          "Healthcare Practitioner",
-          "Dance Scientist",
-          "Dance Critic",
-          "Dance Admin",
-          "Dance Management"
-        ]
-      }
-    ],
     gender: {
       type: String,
       enum: ["female", "male", "other", "prefer not to say"]
@@ -59,6 +64,7 @@ var profileSchema = new Schema(
     jobTitle: String,
     city: String,
     country: String,
+    professionalAreas: [professionalAreasSchema],
     contactDetails: [contactDetailSchema],
     qualifications: [qualificationSchema],
     employment: [employmentSchema],

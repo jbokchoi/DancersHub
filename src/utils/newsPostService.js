@@ -1,3 +1,5 @@
+import tokenService from "./tokenService";
+
 // index
 export function getNewsPosts() {
   return fetch(`/newsPosts`).then(function(res) {
@@ -22,7 +24,8 @@ export function createNewsPost(newsPost) {
       body: newsPost.body
     }),
     headers: {
-      "content-type": "application/json"
+      "content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
     }
   });
 }
@@ -72,7 +75,18 @@ export function addComment(newsPostId, comment) {
       body: comment
     }),
     headers: {
-      "content-type": "application/json"
+      "content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
     }
   });
 }
+
+// delete a comment to a post
+
+// export function deleteComment(newsPostId, commentId) {
+//   return fetch(`/newsPosts/${newsPostId}/${commentId}`, {
+//     method: "delete"
+//   }).then(function(res) {
+//     return res.json();
+//   });
+// }
