@@ -33,26 +33,20 @@ export function addProfArea(user) {
 
 /* ---- contact details ---- */
 
-// get contact details
-
-// export function getContactDetails() {
-//   return fetch(`BASE_URL + `user/profile/contactDetail).then(function(res) {
-//     return res.json();
-//   });
-// }
-
 // add contact detail
 
-// export function addContactDetail(user, profileId) {
-//   return fetch(BASE_URL + `user/${profileId}/contactDetail`, {
-//     method: "POST",
-//     headers: {
-//       "Content-type": "application/json",
-//       Authorization: "Bearer " + tokenService.getToken()
-//     },
-//     body: JSON.stringify(user)
-//   });
-// }
+export function addContactDetail(user) {
+  return fetch(BASE_URL + `user/profile/contactDetail`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(user)
+  }).then(function(res) {
+    return res.json();
+  });
+}
 
 // delete contact detail
 
@@ -66,26 +60,20 @@ export function addProfArea(user) {
 
 /* --- qualifications --- */
 
-// get qualifications
-
-// export function getQualifications() {
-//   return fetch(`BASE_URL + `user/profile/qualification).then(function(res) {
-//     return res.json();
-//   });
-// }
-
 //add qualification
 
-// export function addQualification(user, profileId) {
-//   return fetch(BASE_URL + `user/${profileId}/qualification`, {
-//     method: "POST",
-//     headers: {
-//       "Content-type": "application/json",
-//       Authorization: "Bearer " + tokenService.getToken()
-//     },
-//     body: JSON.stringify(user)
-//   });
-// }
+export function addQualification(user) {
+  return fetch(BASE_URL + `user/profile/qualification`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(user)
+  }).then(function(res) {
+    return res.json();
+  });
+}
 
 //edit qualification
 
@@ -115,26 +103,20 @@ export function addProfArea(user) {
 
 /* --- employment --- */
 
-// get employments
-
-// export function getEmployments() {
-//   return fetch(`BASE_URL + `user/profile/employment).then(function(res) {
-//     return res.json();
-//   });
-// }
-
 //add employment
 
-// export function addEmployment(user, profileId) {
-//   return fetch(BASE_URL + `user/${profileId}/employment`, {
-//     method: "POST",
-//     headers: {
-//       "Content-type": "application/json",
-//       Authorization: "Bearer " + tokenService.getToken()
-//     },
-//     body: JSON.stringify(user)
-//   });
-// }
+export function addEmployment(user) {
+  return fetch(BASE_URL + `user/profile/employment`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    },
+    body: JSON.stringify(user)
+  }).then(function(res) {
+    return res.json();
+  });
+}
 
 //edit employment
 

@@ -6,7 +6,12 @@ import ProfAreas from "../../components/ProfAreas/ProfAreas";
 import ContactDetails from "../../components/ContactDetails/ContactDetails";
 import Qualifications from "../../components/Qualifications/Qualifications";
 import Employment from "../../components/Employment/Employment";
-import { addProfArea } from "../../utils/profileService";
+import {
+  addProfArea,
+  addContactDetail,
+  addQualification,
+  addEmployment
+} from "../../utils/profileService";
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -15,7 +20,26 @@ class ProfilePage extends Component {
       user: props.user,
       profile: [],
       profAreas: [],
-      profArea: ""
+      profArea: "",
+      contactDetails: [],
+      contactDetail: {
+        name: "website",
+        link: ""
+      },
+      qualifications: [],
+      qualification: {
+        schoolOrAcademicProgramme: "",
+        gradYear: 2000,
+        qualificationLocation: ""
+      },
+      employments: [],
+      employment: {
+        yearFrom: 2000,
+        yearTo: 2000,
+        nameOfCompany: "",
+        jobTitle: "",
+        employmentLocation: ""
+      }
     };
   }
 
@@ -26,7 +50,24 @@ class ProfilePage extends Component {
       console.log(json.profile[0].professionalAreas);
       self.setState({
         profile: json.profile[0],
-        profAreas: json.profile[0].professionalAreas
+        profAreas: json.profile[0].professionalAreas,
+        profArea: "",
+        contactDetails: json.profile[0].contactDetails,
+        contactDetail: { name: "website", link: "" },
+        qualifications: json.profile[0].qualifications,
+        qualification: {
+          schoolOrAcademicProgramme: "",
+          gradYear: 2000,
+          qualificationLocation: ""
+        },
+        employments: json.profile[0].employments,
+        employment: {
+          yearFrom: 2000,
+          yearTo: 2000,
+          nameOfCompany: "",
+          jobTitle: "",
+          employmentLocation: ""
+        }
       });
     });
   }
@@ -34,24 +75,149 @@ class ProfilePage extends Component {
   handleProfAreaSubmit = e => {
     var self = this;
     e.preventDefault();
-    console.log("pre add", this.state);
     addProfArea(this.state).then(function() {
       userService.getProfile().then(function(json) {
         self.setState({
           profile: json.profile[0],
           profAreas: json.profile[0].professionalAreas,
-          profArea: ""
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
         });
       });
     });
-    console.log("HELLO: ", this.state.profile.professionalAreas);
   };
 
   handleProfAreaChange = e => {
-    console.log("pre change", e.target.name);
-    console.log("pre change", e.target.value);
     this.setState({ profArea: e.target.value });
-    console.log(this.state);
+  };
+
+  handleContactDetailSubmit = e => {
+    var self = this;
+    e.preventDefault();
+    addContactDetail(this.state).then(function() {
+      userService.getProfile().then(function(json) {
+        self.setState({
+          profile: json.profile[0],
+          profAreas: json.profile[0].professionalAreas,
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
+        });
+      });
+    });
+  };
+
+  handleContactDetailChange = e => {
+    var contactDetail = { ...this.state.contactDetail };
+    contactDetail[e.target.name] = e.target.value;
+    this.setState({
+      contactDetail
+    });
+  };
+
+  handleQualificationSubmit = e => {
+    var self = this;
+    e.preventDefault();
+    addQualification(this.state).then(function() {
+      userService.getProfile().then(function(json) {
+        self.setState({
+          profile: json.profile[0],
+          profAreas: json.profile[0].professionalAreas,
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
+        });
+      });
+    });
+  };
+
+  handleQualificationChange = e => {
+    var qualification = { ...this.state.qualification };
+    qualification[e.target.name] = e.target.value;
+    this.setState({
+      qualification
+    });
+  };
+
+  handleEmploymentSubmit = e => {
+    var self = this;
+    e.preventDefault();
+    addEmployment(this.state).then(function() {
+      userService.getProfile().then(function(json) {
+        self.setState({
+          profile: json.profile[0],
+          profAreas: json.profile[0].professionalAreas,
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
+        });
+      });
+    });
+  };
+
+  handleEmploymentChange = e => {
+    var employment = { ...this.state.employment };
+    employment[e.target.name] = e.target.value;
+    this.setState({
+      employment
+    });
   };
 
   // handleProfAreaDelete = profAreaId => {
@@ -71,12 +237,62 @@ class ProfilePage extends Component {
   render() {
     var profAreas = this.state.profAreas.map((profArea, profAreaId) => {
       return (
-        <li key={profAreaId}>
-          {profArea.profArea}
-          <button>
-            <i className="fa fa-trash" />
-          </button>
-        </li>
+        <tr key={profAreaId}>
+          <td>{profArea.profArea}</td>
+          <td>
+            <button>
+              <i className="fa fa-trash" />
+            </button>
+          </td>
+        </tr>
+      );
+    });
+    var contactDetails = this.state.contactDetails.map(
+      (contactDetail, contactDetailId) => {
+        return (
+          <tr key={contactDetailId}>
+            <td>{contactDetail.name}</td>
+            <td>{contactDetail.link} </td>
+            <td>
+              <button>
+                <i className="fa fa-trash" />
+              </button>
+            </td>
+          </tr>
+        );
+      }
+    );
+    var qualifications = this.state.qualifications.map(
+      (qualification, qualificationId) => {
+        return (
+          <tr key={qualificationId}>
+            <td>{qualification.schoolOrAcademicProgramme}</td>
+            <td>{qualification.gradYear}</td>
+            <td>{qualification.qualificationLocation}</td>
+            <td>
+              {" "}
+              <button>
+                <i className="fa fa-trash" />
+              </button>
+            </td>
+          </tr>
+        );
+      }
+    );
+    var employments = this.state.employments.map((employment, employmentId) => {
+      return (
+        <tr key={employmentId}>
+          <td>{employment.yearFrom}</td>
+          <td>{employment.yearTo}</td>
+          <td>{employment.nameOfCompany}</td>
+          <td>{employment.jobTitle}</td>
+          <td>{employment.employmentLocation}</td>
+          <td>
+            <button>
+              <i className="fa fa-trash" />
+            </button>
+          </td>
+        </tr>
       );
     });
     return (
@@ -110,9 +326,9 @@ class ProfilePage extends Component {
         </table>
         <br />
         <h4>Professional Areas of Work</h4>
-        <section>
-          <ul>{profAreas}</ul>
-        </section>
+        <table className="table">
+          <tbody>{profAreas}</tbody>
+        </table>
         <ProfAreas
           profArea={this.state.profArea}
           handleProfAreaSubmit={this.handleProfAreaSubmit}
@@ -120,13 +336,63 @@ class ProfilePage extends Component {
         />
         <br />
         <hr />
-        <ContactDetails />
+        <h4>Contact Details</h4>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Type of Contact</th>
+              <th>URL</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>{contactDetails}</tbody>
+        </table>
+        <ContactDetails
+          contactDetail={this.state.contactDetail}
+          handleContactDetailSubmit={this.handleContactDetailSubmit}
+          handleContactDetailChange={this.handleContactDetailChange}
+        />
         <br />
         <hr />
-        <Qualifications />
+        <h4>Qualifications</h4>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>School/Academic Programme Name</th>
+              <th>Graduation Year</th>
+              <th>Qualification Location</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>{qualifications}</tbody>
+        </table>
+        <Qualifications
+          qualification={this.state.qualification}
+          handleQualificationSubmit={this.handleQualificationSubmit}
+          handleQualificationChange={this.handleQualificationChange}
+        />
         <br />
         <hr />
-        <Employment />
+        <h4>Employment</h4>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Year From</th>
+              <th>Year To</th>
+              <th>Name of Company</th>
+              <th>Job Title</th>
+              <th>Employment Location</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>{employments}</tbody>
+        </table>
+        <Employment
+          employment={this.state.employment}
+          handleEmploymentSubmit={this.handleEmploymentSubmit}
+          handleEmploymentChange={this.handleEmploymentChange}
+        />
+        {console.log(employments)}
         <hr />
       </div>
     );

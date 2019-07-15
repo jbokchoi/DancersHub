@@ -2,21 +2,30 @@ var express = require("express");
 var router = express.Router();
 var profileController = require("../controllers/profiles");
 
-/* --- GET --- */
-// router.get("/user/profile/profArea", checkAuth, profileController.getProfArea);
-// router.get("/user/profile/contactDetails", checkAuth, profileController.getContactDetail);
-// router.get("/user/profile/qualifications", checkAuth, profileController.getQualification);
-// router.get("/user/profile/employment", checkAuth, profileController.getEmployment);
-
 /* --- POST --- */
 router.post(
   "/user/profile/profArea",
   checkAuth,
   profileController.createProfArea
 );
-// router.post("/user/profile/contactDetails", checkAuth, profileController.createContactDetail);
-// router.post("/user/profile/qualifications", checkAuth, profileController.createQualification);
-// router.post("/user/profile/employment", checkAuth, profileController.createEmployment);
+
+router.post(
+  "/user/profile/contactDetail",
+  checkAuth,
+  profileController.createContactDetail
+);
+
+router.post(
+  "/user/profile/qualification",
+  checkAuth,
+  profileController.createQualification
+);
+
+router.post(
+  "/user/profile/employment",
+  checkAuth,
+  profileController.createEmployment
+);
 
 /* --- PUT --- */
 // router.put("/user/profile/qualifications/:id", checkAuth, profileController.updateQualification);

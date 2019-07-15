@@ -69,7 +69,7 @@ var profileSchema = new Schema(
     professionalAreas: [professionalAreasSchema],
     contactDetails: [contactDetailSchema],
     qualifications: [qualificationSchema],
-    employment: [employmentSchema],
+    employments: [employmentSchema],
     following: [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
   {

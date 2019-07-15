@@ -1,10 +1,10 @@
 const User = require("../models/User");
 
 module.exports = {
-  createProfArea
-  // createContactDetail,
-  // createQualification,
-  // createEmployment,
+  createProfArea,
+  createContactDetail,
+  createQualification,
+  createEmployment
   // editQualification,
   // editEmployment,
   // deleteProfArea
@@ -41,14 +41,18 @@ function createProfArea(req, res) {
 
 /*---- Contact Details Function ----*/
 
-// function createContactDetail(req, res) {
-//   User.findById(req.user._id).then(function(user) {
-//     user.profile[0].contactDetails.unshift(req.body);
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function createContactDetail(req, res) {
+  console.log("userid", req.user._id);
+  console.log("data sent", req.body);
+  User.findById(req.user._id).then(function(user) {
+    console.log("userfound: ", req.body.contactDetail);
+    user.profile[0].contactDetails.push(req.body.contactDetail);
+    console.log("user changed ");
+    return user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
 
 // function deleteContactDetail(req, res) {
 //   User.findById(req.params.userId).then(function(user) {
@@ -61,14 +65,14 @@ function createProfArea(req, res) {
 
 /*---- Qualifications Function ----*/
 
-// function createQualification(req, res) {
-//   User.findById(req.user._id).then(function(user) {
-//     user.profile[0].qualifications.unshift(req.body);
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function createQualification(req, res) {
+  User.findById(req.user._id).then(function(user) {
+    user.profile[0].qualifications.push(req.body.qualification);
+    return user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
 
 // function updateQualification(req, res) {
 //   qualification
@@ -89,14 +93,14 @@ function createProfArea(req, res) {
 
 /*---- Employment Function ----*/
 
-// function createEmployment(req, res) {
-//   User.findById(req.user._id).then(function(user) {
-//     user.profile[0].employment.unshift(req.body);
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function createEmployment(req, res) {
+  User.findById(req.user._id).then(function(user) {
+    user.profile[0].employments.push(req.body.employment);
+    return user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
 
 // function updateEmployment(req, res) {
 //   employment
