@@ -7,8 +7,8 @@ module.exports = {
   signup,
   login,
   createProfile,
-  getProfile
-  // editProfile
+  getProfile,
+  editProfile
 };
 
 async function signup(req, res) {
@@ -55,19 +55,26 @@ function createProfile(req, res) {
 }
 
 function getProfile(req, res) {
-  console.log("WHAT?");
   User.findById(req.user._id).then(function(user) {
     return res.status(200).json(user);
   });
 }
 
-// function editProfile(req, res) {
-//   User.profile
-//     .findByIdAndUpdate(req.user._id, req.body, { new: true })
-//     .then(function(user) {
-//       return res.status(200).json(user);
-//     });
-// }
+function editProfile(req, res) {
+  User.findById(req.user._id).then(function(user) {
+    const profile = user.profile[0];
+    console.log("PROFILE: ", profile.about);
+    console.log("REQ.BODY: ", req.body.user.about);
+    profile.set({
+      about: req.body.user.about,
+      gender: req.body.user.gender,
+      jobTitle: req.body.user.jobTitle,
+      city: req.body.user.city,
+      country: req.body.user.country
+    });
+    return user.save(() => res.status(200).json(user));
+  });
+}
 
 /* --- Helper Functions ---- */
 

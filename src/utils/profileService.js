@@ -20,16 +20,19 @@ export function addProfArea(user) {
   });
 }
 
-//delete professional area
+// delete professional area
 
-// export function deleteProfArea(user, profAreaId) {
-//   console.log("DELETE: ", profAreaId);
-//   return fetch(BASE_URL + `user/profile/profArea/${profAreaId}`, {
-//     method: "delete"
-//   }).then(function(res) {
-//     return res.json();
-//   });
-// }
+export function deleteProfArea(profAreaId) {
+  console.log("DELETE: ", profAreaId);
+  return fetch(BASE_URL + `user/profile/profArea/${profAreaId}`, {
+    method: "delete",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json();
+  });
+}
 
 /* ---- contact details ---- */
 
@@ -50,13 +53,16 @@ export function addContactDetail(user) {
 
 // delete contact detail
 
-// export function deleteContactDetail(user, profileId) {
-//   return fetch(BASE_URL + `user/${profileId}/contactDetail/${contactDetailId`, {
-//     method: "delete"
-//   }).then(function(res) {
-//     return res.json();
-//   });
-// }
+export function deleteContactDetail(contactDetailId) {
+  return fetch(BASE_URL + `user/profile/contactDetail/${contactDetailId}`, {
+    method: "delete",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json();
+  });
+}
 
 /* --- qualifications --- */
 
@@ -93,13 +99,16 @@ export function addQualification(user) {
 
 //delete qualification
 
-// export function deleteQualification(user, profileId) {
-//   return fetch(BASE_URL + `user/${profileId}/qualification/${qualificationId}`, {
-//     method: "delete"
-//   }).then(function(res) {
-//     return res.json();
-//   });
-// }
+export function deleteQualification(qualificationId) {
+  return fetch(BASE_URL + `user/profile/qualification/${qualificationId}`, {
+    method: "delete",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json();
+  });
+}
 
 /* --- employment --- */
 
@@ -134,12 +143,15 @@ export function addEmployment(user) {
 //   });
 // }
 
-//delete employment
+// delete employment;
 
-// export function deleteEmployment(user, profileId) {
-//   return fetch(BASE_URL + `user/${profileId}/employment/${employmentId}`, {
-//     method: "delete"
-//   }).then(function(res) {
-//     return res.json();
-//   });
-// }
+export function deleteEmployment(employmentId) {
+  return fetch(BASE_URL + `user/profile/employment/${employmentId}`, {
+    method: "delete",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json();
+  });
+}

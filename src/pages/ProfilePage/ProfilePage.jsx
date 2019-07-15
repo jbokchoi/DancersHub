@@ -10,7 +10,11 @@ import {
   addProfArea,
   addContactDetail,
   addQualification,
-  addEmployment
+  addEmployment,
+  deleteProfArea,
+  deleteContactDetail,
+  deleteQualification,
+  deleteEmployment
 } from "../../utils/profileService";
 
 class ProfilePage extends Component {
@@ -220,27 +224,137 @@ class ProfilePage extends Component {
     });
   };
 
-  // handleProfAreaDelete = profAreaId => {
-  //   var self = this;
-  //   console.log("DELETE", profAreaId);
-  //   deleteProfArea(profAreaId).then(function() {
-  //     userService.getProfile().then(function(json) {
-  //       self.setState({
-  //         profile: json.profile[0],
-  //         profAreas: json.profile[0].professionalAreas,
-  //         profArea: ""
-  //       });
-  //     });
-  //   });
-  // };
+  handleProfAreaDelete = profAreaId => {
+    console.log("Delete Handle Hit");
+
+    var self = this;
+    console.log("DELETE", profAreaId);
+    deleteProfArea(profAreaId).then(function() {
+      userService.getProfile().then(function(json) {
+        self.setState({
+          profile: json.profile[0],
+          profAreas: json.profile[0].professionalAreas,
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
+        });
+      });
+    });
+  };
+
+  handleContactDetailDelete = contactDetailId => {
+    console.log("Delete Handle Hit");
+
+    var self = this;
+    deleteContactDetail(contactDetailId).then(function() {
+      userService.getProfile().then(function(json) {
+        self.setState({
+          profile: json.profile[0],
+          profAreas: json.profile[0].professionalAreas,
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
+        });
+      });
+    });
+  };
+
+  handleQualificationDelete = qualificationId => {
+    console.log("Delete Handle Hit");
+    var self = this;
+    deleteQualification(qualificationId).then(function() {
+      userService.getProfile().then(function(json) {
+        self.setState({
+          profile: json.profile[0],
+          profAreas: json.profile[0].professionalAreas,
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
+        });
+      });
+    });
+  };
+
+  handleEmploymentDelete = employmentId => {
+    console.log("Delete Handle Hit");
+    var self = this;
+    deleteEmployment(employmentId).then(function() {
+      userService.getProfile().then(function(json) {
+        self.setState({
+          profile: json.profile[0],
+          profAreas: json.profile[0].professionalAreas,
+          profArea: "",
+          contactDetails: json.profile[0].contactDetails,
+          contactDetail: { name: "website", link: "" },
+          qualifications: json.profile[0].qualifications,
+          qualification: {
+            schoolOrAcademicProgramme: "",
+            gradYear: 2000,
+            qualificationLocation: ""
+          },
+          employments: json.profile[0].employments,
+          employment: {
+            yearFrom: 2000,
+            yearTo: 2000,
+            nameOfCompany: "",
+            jobTitle: "",
+            employmentLocation: ""
+          }
+        });
+      });
+    });
+  };
 
   render() {
     var profAreas = this.state.profAreas.map((profArea, profAreaId) => {
+      console.log(profArea);
       return (
         <tr key={profAreaId}>
           <td>{profArea.profArea}</td>
           <td>
-            <button>
+            <button onClick={() => this.handleProfAreaDelete(profArea._id)}>
               <i className="fa fa-trash" />
             </button>
           </td>
@@ -254,7 +368,11 @@ class ProfilePage extends Component {
             <td>{contactDetail.name}</td>
             <td>{contactDetail.link} </td>
             <td>
-              <button>
+              <button
+                onClick={() =>
+                  this.handleContactDetailDelete(contactDetail._id)
+                }
+              >
                 <i className="fa fa-trash" />
               </button>
             </td>
@@ -270,8 +388,16 @@ class ProfilePage extends Component {
             <td>{qualification.gradYear}</td>
             <td>{qualification.qualificationLocation}</td>
             <td>
-              {" "}
               <button>
+                <i className="fa fa-edit" />
+              </button>
+            </td>
+            <td>
+              <button
+                onClick={() =>
+                  this.handleQualificationDelete(qualification._id)
+                }
+              >
                 <i className="fa fa-trash" />
               </button>
             </td>
@@ -289,6 +415,11 @@ class ProfilePage extends Component {
           <td>{employment.employmentLocation}</td>
           <td>
             <button>
+              <i className="fa fa-edit" />
+            </button>
+          </td>
+          <td>
+            <button onClick={() => this.handleEmploymentDelete(employment._id)}>
               <i className="fa fa-trash" />
             </button>
           </td>
@@ -362,6 +493,7 @@ class ProfilePage extends Component {
               <th>Graduation Year</th>
               <th>Qualification Location</th>
               <th />
+              <th />
             </tr>
           </thead>
           <tbody>{qualifications}</tbody>
@@ -382,6 +514,7 @@ class ProfilePage extends Component {
               <th>Name of Company</th>
               <th>Job Title</th>
               <th>Employment Location</th>
+              <th />
               <th />
             </tr>
           </thead>

@@ -39,7 +39,8 @@ export function editNewsPost(newsPost) {
       body: newsPost.body
     }),
     headers: {
-      "content-type": "application/json"
+      "content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
     }
   });
 }
@@ -47,7 +48,10 @@ export function editNewsPost(newsPost) {
 // delete
 export function deleteNewsPost(id) {
   return fetch(`/newsPosts/${id}`, {
-    method: "delete"
+    method: "delete",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken()
+    }
   }).then(function(res) {
     return res.json();
   });

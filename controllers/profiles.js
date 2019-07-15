@@ -4,13 +4,13 @@ module.exports = {
   createProfArea,
   createContactDetail,
   createQualification,
-  createEmployment
+  createEmployment,
   // editQualification,
   // editEmployment,
-  // deleteProfArea
-  // deleteContactDetail,
-  // deleteQualification,
-  // deleteEmployment,
+  deleteProfArea,
+  deleteContactDetail,
+  deleteQualification,
+  deleteEmployment
 };
 
 /*---- Profesional Areas Function ----*/
@@ -29,15 +29,17 @@ function createProfArea(req, res) {
   });
 }
 
-// function deleteProfArea(req, res) {
-//   console.log("delete controller");
-//   User.findById(req.user._id).then(function(user) {
-//     user.profArea.id(req.params.profAreaId).remove();
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function deleteProfArea(req, res) {
+  console.log("delete controller");
+  console.log("REQ.PARAMS", req.params);
+  User.findById(req.user._id).then(function(user) {
+    console.log(user.profile[0].professionalAreas);
+    user.profile[0].professionalAreas.id(req.params.id).remove();
+    user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
 
 /*---- Contact Details Function ----*/
 
@@ -54,14 +56,14 @@ function createContactDetail(req, res) {
   });
 }
 
-// function deleteContactDetail(req, res) {
-//   User.findById(req.params.userId).then(function(user) {
-//     user.contactDetail.id(req.params.contactDetailId).remove();
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function deleteContactDetail(req, res) {
+  User.findById(req.user._id).then(function(user) {
+    user.profile[0].contactDetails.id(req.params.id).remove();
+    user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
 
 /*---- Qualifications Function ----*/
 
@@ -82,14 +84,14 @@ function createQualification(req, res) {
 //     });
 // }
 
-// function deleteQualification(req, res) {
-//   User.findById(req.params.userId).then(function(user) {
-//     user.qualifications.id(req.params.qualificationId).remove();
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function deleteQualification(req, res) {
+  User.findById(req.user._id).then(function(user) {
+    user.profile[0].qualifications.id(req.params.id).remove();
+    user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
 
 /*---- Employment Function ----*/
 
@@ -110,11 +112,11 @@ function createEmployment(req, res) {
 //     });
 // }
 
-// function deleteEmployment(req, res) {
-//   User.findById(req.params.userId).then(function(user) {
-//     user.employments.id(req.params.employmentId).remove();
-//     user.save(function(user) {
-//       res.status(200).json(user);
-//     });
-//   });
-// }
+function deleteEmployment(req, res) {
+  User.findById(req.user._id).then(function(user) {
+    user.profile[0].employments.id(req.params.id).remove();
+    user.save(function(user) {
+      res.status(200).json(user);
+    });
+  });
+}
