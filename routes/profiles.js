@@ -23,7 +23,11 @@ router.post(
 // router.put("/user/profile/employment/:id", checkAuth, profileController.updateEmployment);
 
 /* --- DELETE --- */
-// router.delete("/user/profile/profArea/:id", checkAuth, profileController.deleteProfArea);
+// router.delete(
+//   "/user/profile/profArea/:id",
+//   checkAuth,
+//   profileController.deleteProfArea
+// );
 // router.delete("/user/profile/contactDetails/:id", checkAuth, profileController.deleteContactDetail);
 // router.delete("/user/profile/qualifications/:id", checkAuth, profileController.deleteQualification);
 // router.delete("/user/profile/employment/:id", checkAuth, profileController.deleteEmployment);

@@ -4,14 +4,6 @@ const BASE_URL = "/api/";
 
 /* --- professional areas --- */
 
-// get professional area
-
-// export function getProfAreas() {
-//   return fetch(`BASE_URL + `user/profile/profArea).then(function(res) {
-//     return res.json();
-//   });
-// }
-
 // add professional area
 
 export function addProfArea(user) {
@@ -30,7 +22,8 @@ export function addProfArea(user) {
 
 //delete professional area
 
-// export function deleteProfArea(user, profile) {
+// export function deleteProfArea(user, profAreaId) {
+//   console.log("DELETE: ", profAreaId);
 //   return fetch(BASE_URL + `user/profile/profArea/${profAreaId}`, {
 //     method: "delete"
 //   }).then(function(res) {

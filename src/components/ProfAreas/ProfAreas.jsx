@@ -1,48 +1,23 @@
 import React, { Component } from "react";
-import { addProfArea } from "../../utils/profileService";
 
 class ProfAreas extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      profArea: ""
-      // newProfArea: ""
-    };
+    this.state = {};
   }
-
-  componentDidMount = e => {
-    console.log("component mounted", this.state);
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log("pre add", this.state);
-    addProfArea(this.state).then(function() {
-      // console.log("post add", this.state);
-      window.location = "/profile";
-    });
-  };
-
-  handleChange = e => {
-    console.log("pre change", e.target.name);
-    console.log("pre change", e.target.value);
-    this.setState({ profArea: e.target.value });
-    console.log(this.state);
-  };
 
   render() {
     return (
       <div>
-        <h4>Professional Areas of Work</h4>
-        <section>list of professional areas</section>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.handleProfAreaSubmit}>
           <label>Add Area of Work</label>
           <br />
           <select
-            onChange={this.handleChange}
-            value={this.state.profArea}
+            onChange={this.props.handleProfAreaChange}
+            value={this.props.profArea}
             name="profArea"
           >
+            <option value="" />
             <option value="Dancer">Dancer</option>
             <option value="Choreographer">Choreographer</option>
             <option value="Mass Movement">Mass Movement</option>

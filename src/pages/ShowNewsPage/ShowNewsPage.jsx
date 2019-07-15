@@ -135,6 +135,7 @@ class ShowNewsPage extends Component {
         <h2>{this.state.title}</h2>
         <br />
         <p>{this.state.body}</p>
+        {console.log(this.state)}
         <p>Posted by:{this.state.postedByUser.name}</p>
         <p>Posted on:{this.state.postedOn}</p>
         <Link

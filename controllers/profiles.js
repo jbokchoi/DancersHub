@@ -7,7 +7,7 @@ module.exports = {
   // createEmployment,
   // editQualification,
   // editEmployment,
-  // deleteProfArea,
+  // deleteProfArea
   // deleteContactDetail,
   // deleteQualification,
   // deleteEmployment,
@@ -30,7 +30,8 @@ function createProfArea(req, res) {
 }
 
 // function deleteProfArea(req, res) {
-//   User.findById(req.params.userId).then(function(user) {
+//   console.log("delete controller");
+//   User.findById(req.user._id).then(function(user) {
 //     user.profArea.id(req.params.profAreaId).remove();
 //     user.save(function(user) {
 //       res.status(200).json(user);
