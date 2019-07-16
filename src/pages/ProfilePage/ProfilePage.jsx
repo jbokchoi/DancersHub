@@ -388,11 +388,6 @@ class ProfilePage extends Component {
             <td>{qualification.gradYear}</td>
             <td>{qualification.qualificationLocation}</td>
             <td>
-              <button>
-                <i className="fa fa-edit" />
-              </button>
-            </td>
-            <td>
               <button
                 onClick={() =>
                   this.handleQualificationDelete(qualification._id)
@@ -413,11 +408,6 @@ class ProfilePage extends Component {
           <td>{employment.nameOfCompany}</td>
           <td>{employment.jobTitle}</td>
           <td>{employment.employmentLocation}</td>
-          <td>
-            <button>
-              <i className="fa fa-edit" />
-            </button>
-          </td>
           <td>
             <button onClick={() => this.handleEmploymentDelete(employment._id)}>
               <i className="fa fa-trash" />
@@ -493,7 +483,6 @@ class ProfilePage extends Component {
               <th>Graduation Year</th>
               <th>Qualification Location</th>
               <th />
-              <th />
             </tr>
           </thead>
           <tbody>{qualifications}</tbody>
@@ -514,7 +503,6 @@ class ProfilePage extends Component {
               <th>Name of Company</th>
               <th>Job Title</th>
               <th>Employment Location</th>
-              <th />
               <th />
             </tr>
           </thead>

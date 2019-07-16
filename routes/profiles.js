@@ -27,10 +27,6 @@ router.post(
   profileController.createEmployment
 );
 
-/* --- PUT --- */
-// router.put("/user/profile/qualifications/:id", checkAuth, profileController.updateQualification);
-// router.put("/user/profile/employment/:id", checkAuth, profileController.updateEmployment);
-
 /* --- DELETE --- */
 router.delete(
   "/user/profile/profArea/:id",

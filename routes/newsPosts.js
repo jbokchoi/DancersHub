@@ -11,6 +11,6 @@ router.put("/:id/downvote", newsPostsController.downvoteNewsPost);
 router.delete("/:id", newsPostsController.deleteNewsPost);
 router.put("/:id", newsPostsController.updateNewsPost);
 router.post("/:id/comments", newsPostsController.addComment);
-// router.delete("/:id/commentId", newsPostsController.deleteComment);
+router.delete("/:newsPostId/:commentId", newsPostsController.deleteComment);
 
 module.exports = router;

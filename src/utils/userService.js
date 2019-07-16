@@ -43,6 +43,31 @@ function login(creds) {
     .then(({ token }) => tokenService.setToken(token));
 }
 
+/*--- All Users related functions --- */
+function getAllUsers() {
+  return fetch(BASE_URL + `user/allUsers`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json();
+  });
+}
+
+function getUserProfile(id) {
+  return fetch(BASE_URL + `user/allUsers/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json();
+  });
+}
+
 /*--- Profile related functions --- */
 
 function createProfile(user) {
@@ -90,5 +115,7 @@ export default {
   login,
   createProfile,
   getProfile,
-  editProfile
+  editProfile,
+  getAllUsers,
+  getUserProfile
 };

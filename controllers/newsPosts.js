@@ -9,7 +9,7 @@ module.exports = {
   updateNewsPost,
   upvoteNewsPost,
   addComment,
-  // deleteComment,
+  deleteComment,
   downvoteNewsPost
 };
 
@@ -39,10 +39,8 @@ function getOneNewsPost(req, res) {
 }
 
 function createNewsPost(req, res) {
-  console.log("HELLO create controller hit", req.user);
-  console.log(req.user._id);
+  console.log(req);
   User.findById(req.user._id).exec(function(err, user) {
-    console.log("user found");
     newsPost.create(req.body, function(err, newsPost) {
       newsPost.postedByUser = user._id;
       newsPost.save();
@@ -52,9 +50,7 @@ function createNewsPost(req, res) {
 }
 
 function getAllNewsPosts(req, res) {
-  console.log("HELLO");
   newsPost.find({}).then(function(newsPosts) {
-    console.log(newsPosts);
     res.status(200).json(newsPosts);
   });
 }
@@ -86,11 +82,24 @@ function addComment(req, res) {
   });
 }
 
-// function deleteComment(req, res) {
-//   newsPost.findById(req.params.newsPostId).then(function(newsPost) {
-//     newsPost.comments.id(req.params.commentId).remove();
-//     newsPost.save(function(newsPost) {
-//       res.status(200).json(newsPost);
-//     });
-//   });
-// }
+function deleteComment(req, res) {
+  console.log(req.params);
+  newsPost.findById(req.params.newsPostId).then(function(newsPost) {
+    console.log("HELLO", newsPost.comments);
+    newsPost.comments.forEach((c, i) => {
+      console.log("FINDING C", c._id.toString());
+      console.log("REQ", req.params.commentId);
+      if (c._id.toString() == req.params.commentId.toString()) {
+        console.log("FINDING I", i);
+        newsPost.comments.splice(i, 1);
+        console.log(newsPost.comments);
+        newsPost.save();
+      }
+    });
+    // newsPost.comments.id(req.params.commentId).remove();
+
+    newsPost.save(function(newsPost) {
+      res.status(200).json(newsPost);
+    });
+  });
+}

@@ -29,7 +29,7 @@ class EditNewsPage extends Component {
     var self = this;
     e.preventDefault();
     editNewsPost(this.state).then(function(json) {
-      window.location = `/newsPosts/${self.state.id}`;
+      self.props.history.push(`/newsPosts/${self.state.id}`);
     });
   };
 

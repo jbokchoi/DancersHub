@@ -81,22 +81,6 @@ export function addQualification(user) {
   });
 }
 
-//edit qualification
-
-// export function editQualification(user) {
-//   console.log("edit service hit");
-//   return fetch(BASE_URL + `user/${profileId}/qualification/${qualificationId}`, {
-//     method: "PUT",
-//     body: JSON.stringify({ user }),
-//     headers: {
-//       "Content-type": "application/json",
-//       Authorization: "Bearer " + tokenService.getToken()
-//     }
-//   }).then(function(res) {
-//     return res.json(user);
-//   });
-// }
-
 //delete qualification
 
 export function deleteQualification(qualificationId) {
@@ -126,22 +110,6 @@ export function addEmployment(user) {
     return res.json();
   });
 }
-
-//edit employment
-
-// export function editEmployment(user) {
-//   console.log("edit service hit");
-//   return fetch(BASE_URL + `user/${profileId}/employment/${employmentId}`, {
-//     method: "PUT",
-//     body: JSON.stringify({ user }),
-//     headers: {
-//       "Content-type": "application/json",
-//       Authorization: "Bearer " + tokenService.getToken()
-//     }
-//   }).then(function(res) {
-//     return res.json(user);
-//   });
-// }
 
 // delete employment;
 

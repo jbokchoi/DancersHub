@@ -16,12 +16,12 @@ export function getNewsPost(id) {
 
 // create
 export function createNewsPost(newsPost) {
-  console.log("create news post hit");
+  console.log("NEWSPOST:", newsPost);
   return fetch("/newsPosts", {
     method: "POST",
     body: JSON.stringify({
-      title: newsPost.title,
-      body: newsPost.body
+      title: newsPost.newsPost.title,
+      body: newsPost.newsPost.body
     }),
     headers: {
       "content-type": "application/json",
@@ -87,10 +87,13 @@ export function addComment(newsPostId, comment) {
 
 // delete a comment to a post
 
-// export function deleteComment(newsPostId, commentId) {
-//   return fetch(`/newsPosts/${newsPostId}/${commentId}`, {
-//     method: "delete"
-//   }).then(function(res) {
-//     return res.json();
-//   });
-// }
+export function deleteComment(newsPostId, commentId) {
+  return fetch(`/newsPosts/${newsPostId}/${commentId}`, {
+    method: "delete",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken()
+    }
+  }).then(function(res) {
+    return res.json();
+  });
+}

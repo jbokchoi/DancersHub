@@ -3,8 +3,8 @@ import {
   getNewsPost,
   addComment,
   upvoteNewsPost,
-  deleteNewsPost
-  // deleteComment
+  deleteNewsPost,
+  deleteComment
 } from "../../utils/newsPostService";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
@@ -111,21 +111,28 @@ class ShowNewsPage extends Component {
     });
   };
 
-  // handleCommentDelete = idx => {
-  //   deleteComment(idx).then(function(json) {
-  //     window.location = `/news/${newsPost._id}`;
-  //   });
-  // };
+  handleCommentDelete = commentId => {
+    var self = this;
+    // var id = this.props.match.params.id;
+    console.log(commentId);
+    deleteComment(this.props.match.params.id, commentId).then(function() {
+      self.props.history.push(`/news`);
+    });
+  };
 
   render() {
     var comments = this.state.comments.map((comment, idx) => {
+      console.log("Comment: ", comment);
+      console.log("newspost: ", this.props.match.params.id);
       return (
         <li key={idx}>
           <h4>Comment:</h4>
           <p>{comment.body}</p>
           <p>Commented On:</p>
           {comment.createdAt}
-          <button>x</button>
+          <button onClick={() => this.handleCommentDelete(comment._id)}>
+            <i className="fa fa-trash" />
+          </button>
         </li>
       );
     });
@@ -145,35 +152,32 @@ class ShowNewsPage extends Component {
           Edit Post
         </Link>
         &nbsp; &nbsp;
-        <a
-          href="#"
+        <button
           onClick={() => this.handleDelete(this.state.id)}
           className="btn btn-info"
         >
           Delete Post
           <i className="fa fa-trash" />
-        </a>
+        </button>
         <br />
         <br />
         <br />
         <hr />
         <p>Upvotes: {this.state.upvotes}</p>
-        <a
-          href="#"
+        <button
           onClick={() => this.handleUpvote(this.state.id, "upvote")}
           className="btn btn-success"
         >
           Upvote
           <i className="fa fa-thumbs-up" />
-        </a>
+        </button>
         &nbsp; &nbsp;
-        <a
-          href="#"
+        <button
           onClick={() => this.handleDownvote(this.state.id, "downvote")}
           className="btn btn-danger"
         >
           Downvote <i className="fa fa-thumbs-down" />
-        </a>
+        </button>
         <br />
         <hr />
         {this.state.comments.length <= 0 ? (

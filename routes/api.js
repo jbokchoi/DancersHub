@@ -9,7 +9,8 @@ router.post("/login", usersController.login);
 /* --- Protected Routes ---*/
 router.use(require("../config/auth"));
 router.get("/user", checkAuth, usersController.getProfile);
-// router.get("/allUsers", checkAuth, usersController.getAllUsers);
+router.get("/user/allUsers", checkAuth, usersController.getAllUsers);
+router.get("/user/allUsers/:id", checkAuth, usersController.getUserProfile);
 router.post("/user", checkAuth, usersController.createProfile);
 router.put("/user", checkAuth, usersController.editProfile);
 

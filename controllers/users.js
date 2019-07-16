@@ -8,7 +8,9 @@ module.exports = {
   login,
   createProfile,
   getProfile,
-  editProfile
+  editProfile,
+  getAllUsers,
+  getUserProfile
 };
 
 async function signup(req, res) {
@@ -40,6 +42,21 @@ async function login(req, res) {
   } catch (err) {
     return res.status(401).json(err);
   }
+}
+
+/*----- ALL User Functions ----*/
+function getAllUsers(req, res) {
+  console.log("hit");
+  User.find({}).then(function(users) {
+    console.log(users);
+    res.status(200).json(users);
+  });
+}
+
+function getUserProfile(req, res) {
+  User.findById(req.params.id).then(function(user) {
+    res.status(200).json(user);
+  });
 }
 
 /* --- Profile Functions ---- */

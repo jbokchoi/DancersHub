@@ -35,11 +35,10 @@ class EditProfilePage extends Component {
   }
 
   handleSubmit = e => {
-    // var self = this;
-    console.log("EDIT SUBMIT HANDLE: ", this.state);
+    var self = this;
     e.preventDefault();
     userService.editProfile(this.state).then(function(json) {
-      window.location = `/profile`;
+      self.props.history.push("/profile");
     });
   };
 

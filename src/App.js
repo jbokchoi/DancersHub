@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage/LogInPage";
 import IndexPage from "./pages/IndexPage/IndexPage";
 import WhosWhoPage from "./pages/WhosWhoPage/WhosWhoPage";
+import UserShowPage from "./pages/UserShowPage/UserShowPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileCreatePage from "./pages/ProfileCreatePage/ProfileCreatePage";
@@ -76,8 +77,37 @@ class App extends Component {
               )
             }
           />
-          <Route exact path="/whoswho" render={() => <WhosWhoPage />} />
-
+          <Route
+            exact
+            path="/whoswho"
+            render={props =>
+              userService.getUser() ? (
+                <WhosWhoPage
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/whoswho/:id"
+            render={props =>
+              userService.getUser() ? (
+                <UserShowPage
+                  {...props}
+                  user={this.state.user}
+                  handleLogOut={this.handleLogOut}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          >
           <Route
             exact
             path="/profile"

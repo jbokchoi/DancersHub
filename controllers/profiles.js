@@ -5,8 +5,6 @@ module.exports = {
   createContactDetail,
   createQualification,
   createEmployment,
-  // editQualification,
-  // editEmployment,
   deleteProfArea,
   deleteContactDetail,
   deleteQualification,
@@ -76,14 +74,6 @@ function createQualification(req, res) {
   });
 }
 
-// function updateQualification(req, res) {
-//   qualification
-//     .findByIdAndUpdate(req.params.id, req.body, { new: true })
-//     .then(function(qualification) {
-//       res.status(200).json(qualification);
-//     });
-// }
-
 function deleteQualification(req, res) {
   User.findById(req.user._id).then(function(user) {
     user.profile[0].qualifications.id(req.params.id).remove();
@@ -103,14 +93,6 @@ function createEmployment(req, res) {
     });
   });
 }
-
-// function updateEmployment(req, res) {
-//   employment
-//     .findByIdAndUpdate(req.params.id, req.body, { new: true })
-//     .then(function(employment) {
-//       res.status(200).json(employment);
-//     });
-// }
 
 function deleteEmployment(req, res) {
   User.findById(req.user._id).then(function(user) {
