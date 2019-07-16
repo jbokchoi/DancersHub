@@ -12,6 +12,11 @@ class HomePage extends Component {
   render() {
     return (
       <div className="HomePage">
+        <img
+          className="HomePageImg"
+          src="https://i.imgur.com/W70jaOe.png"
+          alt="DH Logo"
+        />
         <Link className="HomePageLinks" to="/signup">
           Sign Up
         </Link>

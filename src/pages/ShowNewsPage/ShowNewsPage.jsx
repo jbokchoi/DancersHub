@@ -41,6 +41,7 @@ class ShowNewsPage extends Component {
         comments: newsPost.comments,
         commentBody: "",
         commentedOn: newsPost.comments.createdAt,
+        commentPostedBy: newsPost.comments.postedByUser,
         upvotes: newsPost.upvotes
       });
     });
@@ -61,6 +62,7 @@ class ShowNewsPage extends Component {
           body: newsPost.body,
           comments: newsPost.comments,
           commentBody: "",
+          commentPostedBy: newsPost.comments.postedByUser,
           upvotes: newsPost.upvotes
         });
       });
@@ -206,11 +208,6 @@ class ShowNewsPage extends Component {
             value={this.state.CommentBody}
           />
           <br />
-          <input
-            type="hidden"
-            value={this.state.commentPostedBy}
-            name="postedByUser"
-          />
           <input type="submit" value="Add Comment" className="btn btn-dark" />
         </form>
       </div>

@@ -23,7 +23,7 @@ class LoginPage extends Component {
       this.props.handleSignupOrLogin();
       console.log("handlelogin worked");
       // Successfully signed up - show GamePage
-      this.props.history.push("/index");
+      this.props.history.push("/profile");
       console.log("hi calvin");
     } catch (err) {
       // Invalid user data (probably duplicate email)
@@ -37,7 +37,7 @@ class LoginPage extends Component {
         <header className="header-footer">Log In</header>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 col-md-6 col-lg-6">
               <input
                 type="email"
                 className="form-control"
@@ -46,10 +46,13 @@ class LoginPage extends Component {
                 name="email"
                 onChange={this.handleChange}
               />
+              <small id="emailHelp" class="form-text text-muted">
+                We'll never share your email with anyone else.
+              </small>
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 col-md-6 col-lg-6">
               <input
                 type="password"
                 className="form-control"
