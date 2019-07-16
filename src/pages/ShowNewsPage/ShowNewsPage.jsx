@@ -131,7 +131,7 @@ class ShowNewsPage extends Component {
           <p>Commented by:</p>
           {comment.postedByUser.name}
           <br />
-          {this.props.user._id === this.state.postedByUser._id ? (
+          {this.props.user._id === comment.postedByUser._id ? (
             <button onClick={() => this.handleCommentDelete(comment._id)}>
               <i className="fa fa-trash" />
             </button>
