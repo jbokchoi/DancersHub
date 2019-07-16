@@ -492,24 +492,26 @@ class ProfilePage extends Component {
           <br />
           <hr />
           <h4>Contact Details</h4>
-          <table className="col-8 justify-content-center table profileTable">
-            <thead>
-              <tr>
-                <th>Type of Contact</th>
-                <th>URL</th>
-                <th />
-              </tr>
-            </thead>
-            {this.state.contactDetails.length <= 0 ? (
-              <tbody>
+          <div className=" col-8 justify-content-center table-responsive">
+            <table className="table profileTable">
+              <thead>
                 <tr>
-                  <td colSpan="3">add contact details</td>
+                  <th>Type of Contact</th>
+                  <th>URL</th>
+                  <th />
                 </tr>
-              </tbody>
-            ) : (
-              <tbody>{contactDetails}</tbody>
-            )}
-          </table>
+              </thead>
+              {this.state.contactDetails.length <= 0 ? (
+                <tbody>
+                  <tr>
+                    <td colSpan="3">add contact details</td>
+                  </tr>
+                </tbody>
+              ) : (
+                <tbody>{contactDetails}</tbody>
+              )}
+            </table>
+          </div>
           <ContactDetails
             contactDetail={this.state.contactDetail}
             handleContactDetailSubmit={this.handleContactDetailSubmit}
@@ -518,25 +520,27 @@ class ProfilePage extends Component {
           <br />
           <hr />
           <h4>Qualifications</h4>
-          <table className="col-8 justify-content-center table profileTable">
-            <thead>
-              <tr>
-                <th>School/Academic Programme Name</th>
-                <th>Graduation Year</th>
-                <th>Qualification Location</th>
-                <th />
-              </tr>
-            </thead>
-            {this.state.qualifications.length <= 0 ? (
-              <tbody>
+          <div className=" col-8 justify-content-center table-responsive">
+            <table className="table profileTable">
+              <thead>
                 <tr>
-                  <td colSpan="4">add qualification details</td>
+                  <th>School/Academic Programme Name</th>
+                  <th>Graduation Year</th>
+                  <th>Qualification Location</th>
+                  <th />
                 </tr>
-              </tbody>
-            ) : (
-              <tbody>{qualifications}</tbody>
-            )}
-          </table>
+              </thead>
+              {this.state.qualifications.length <= 0 ? (
+                <tbody>
+                  <tr>
+                    <td colSpan="4">add qualification details</td>
+                  </tr>
+                </tbody>
+              ) : (
+                <tbody>{qualifications}</tbody>
+              )}
+            </table>
+          </div>
           <Qualifications
             qualification={this.state.qualification}
             handleQualificationSubmit={this.handleQualificationSubmit}
@@ -545,27 +549,30 @@ class ProfilePage extends Component {
           <br />
           <hr />
           <h4>Employment</h4>
-          <table className="col-8 justify-content-center table profileTable">
-            <thead>
-              <tr>
-                <th>Year From</th>
-                <th>Year To</th>
-                <th>Name of Company</th>
-                <th>Job Title</th>
-                <th>Employment Location</th>
-                <th />
-              </tr>
-            </thead>
-            {this.state.employments.length <= 0 ? (
-              <tbody>
+
+          <div className=" col-8 justify-content-center table-responsive">
+            <table className="table profileTable">
+              <thead>
                 <tr>
-                  <td colSpan="6">add employment details</td>
+                  <th>Year From</th>
+                  <th>Year To</th>
+                  <th>Name of Company</th>
+                  <th>Job Title</th>
+                  <th>Employment Location</th>
+                  <th />
                 </tr>
-              </tbody>
-            ) : (
-              <tbody>{employments}</tbody>
-            )}
-          </table>
+              </thead>
+              {this.state.employments.length <= 0 ? (
+                <tbody>
+                  <tr>
+                    <td colSpan="6">add employment details</td>
+                  </tr>
+                </tbody>
+              ) : (
+                <tbody>{employments}</tbody>
+              )}
+            </table>
+          </div>
           <Employment
             employment={this.state.employment}
             handleEmploymentSubmit={this.handleEmploymentSubmit}
