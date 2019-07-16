@@ -421,7 +421,7 @@ class ProfilePage extends Component {
         <div className="profilePage">
           <h1>Welcome, {this.props.user.name}!</h1>
 
-          <table className="col-8 justify-content-center table table-bordered profileTable">
+          <table className="col-8 justify-content-center table table-borderless table-condensed table-hover profileTable">
             <tbody>
               <tr>
                 <th colSpan="2">About</th>

@@ -54,7 +54,7 @@ class SignupForm extends Component {
         <h1>Sign Up Page</h1>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <div>
               <input
                 type="text"
                 className="form-control Login-SignUpForm"
@@ -66,7 +66,7 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <div>
               <input
                 type="email"
                 className="form-control Login-SignUpForm"
@@ -81,7 +81,7 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <div>
               <input
                 type="password"
                 className="form-control Login-SignUpForm"
@@ -93,7 +93,7 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <div>
               <input
                 type="password"
                 className="form-control Login-SignUpForm"

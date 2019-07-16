@@ -50,49 +50,66 @@ class EditProfilePage extends Component {
     return (
       <div>
         <NavBar handleLogOut={this.handleLogOut} />
-        <h1>Edit Profile</h1>
-        <hr />
-        <form onSubmit={this.handleSubmit}>
-          <label>About</label>
-          <textarea
-            onChange={this.handleChange}
-            value={this.state.about}
-            name="about"
-          />
+        <div className="profilePage">
+          <h1>Edit Profile</h1>
+          <hr />
+          <div className="col-8 justify-content-center">
+            <form className="form-horizontal" onSubmit={this.handleSubmit}>
+              <label>About</label>
+              <textarea
+                className="form-control profile-forms"
+                onChange={this.handleChange}
+                value={this.state.about}
+                name="about"
+                autoComplete="off"
+              />
+              <br />
+              <label>Gender</label>
+              <select
+                className="form-control profile-forms"
+                value={this.state.gender}
+                onChange={this.handleChange}
+                name="gender"
+              >
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other</option>
+                <option value="prefer not to say">Prefer not to say</option>
+              </select>
+              <br />
 
-          <label>Gender</label>
-          <select
-            value={this.state.gender}
-            onChange={this.handleChange}
-            name="gender"
-          >
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-            <option value="other">Other</option>
-            <option value="prefer not to say">Prefer not to say</option>
-          </select>
+              <label>Job Title</label>
+              <input
+                className="form-control profile-forms"
+                value={this.state.jobTitle}
+                onChange={this.handleChange}
+                name="jobTitle"
+                autoComplete="off"
+              />
+              <br />
 
-          <label>Job Title</label>
-          <input
-            value={this.state.jobTitle}
-            onChange={this.handleChange}
-            name="jobTitle"
-          />
-
-          <label>City</label>
-          <input
-            name="city"
-            value={this.state.city}
-            onChange={this.handleChange}
-          />
-          <label>Country</label>
-          <input
-            name="country"
-            value={this.state.country}
-            onChange={this.handleChange}
-          />
-          <button className="btn btn-default">Submit Edit</button>
-        </form>
+              <label>City</label>
+              <input
+                className="form-control profile-forms"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleChange}
+                autoComplete="off"
+              />
+              <br />
+              <label>Country</label>
+              <input
+                className="form-control profile-forms"
+                name="country"
+                value={this.state.country}
+                onChange={this.handleChange}
+                autoComplete="off"
+              />
+              <br />
+              <button className="btn btn-default submitBtn">Submit Edit</button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

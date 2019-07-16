@@ -24,14 +24,24 @@
   border: none;
 }
 
+.trashBtn:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
+
 .fa-times {
   color: #88034a;
   font-size: 20px;
 }
 
-.fa-times:hover {
-  color: #f2f2f2;
-  background-color: rgba(136, 3, 74, 0.7);
+.fa-plus-circle {
+  color: #88034a;
+  font-size: 30px;
+}
+
+.fa-times:hover,
+.fa-plus-circle:hover {
+  color: #ffa94c;
 }
 
 h4 {
@@ -41,7 +51,48 @@ h4 {
 }
 
 label {
-  color: #ffa94c;
+  color: #343a40;
   text-transform: uppercase;
   font-weight: 600;
+}
+
+.profile {
+  margin: 3vmax;
+  padding: 3vmax;
+  border-radius: 8px;
+  background-color: rgba(211, 211, 211, 0.3);
+}
+
+.profile-forms {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #343a40;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.btn:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.table-borderless td,
+.table-borderless th {
+  border: 0;
+}
+
+input,
+select,
+option,
+textarea {
+  text-align: center;
 }

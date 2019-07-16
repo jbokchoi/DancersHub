@@ -27,12 +27,17 @@ class WhosWhoPage extends Component {
       return (
         <div key={idx} className="card" id="whos-who-card">
           <div className="card-body">
-            <Link to={`/whoswho/${user._id}`} className="card-title">
+            <Link
+              to={`/whoswho/${user._id}`}
+              className="card-title WhosWhoLinks"
+            >
               {user.name}
-            </Link>
-            <h6 className="card-subtitle mb-2 text-muted">
+            </Link>{" "}
+            <br />
+            <br />
+            <h5 className="card-subtitle mb-2 text-muted">
               {user.profile[0].jobTitle}
-            </h6>
+            </h5>
             <p className="card-text">{user.profile[0].city}</p>
           </div>
         </div>
@@ -41,8 +46,10 @@ class WhosWhoPage extends Component {
     return (
       <div>
         <NavBar handleLogOut={this.handleLogOut} />
-        <h1>Dance Hub Members</h1>
-        <div>{users}</div>
+        <div className="whos-who-page">
+          <h1>Dance Hub Members</h1>
+          <div className="whos-who-cards">{users}</div>
+        </div>
       </div>
     );
   }
