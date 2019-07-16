@@ -92,7 +92,6 @@ button:focus {
 
 input,
 select,
-option,
-textarea {
+option {
   text-align: center;
 }

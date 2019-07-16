@@ -27,6 +27,19 @@ class WhosWhoPage extends Component {
       return (
         <div key={idx} className="card" id="whos-who-card">
           <div className="card-body">
+            {user.profile[0].imageUrl ? (
+              <img
+                src={`${user.profile[0].imageUrl}`}
+                alt="profileImages"
+                className="profilePic"
+              />
+            ) : (
+              <img
+                className="profilePic"
+                src={"https://i.imgur.com/zJfbqxe.jpg"}
+                alt="profileImage"
+              />
+            )}
             <Link
               to={`/whoswho/${user._id}`}
               className="card-title WhosWhoLinks"

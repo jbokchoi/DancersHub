@@ -65,7 +65,7 @@ class NewsPage extends Component {
           newsPost: {
             title: "",
             body: "",
-            postedByUser: self.state.user
+            postedByUser: ""
           }
         });
       });
@@ -91,7 +91,7 @@ class NewsPage extends Component {
           newsPost: {
             title: "",
             body: "",
-            postedByUser: self.state.user
+            postedByUser: ""
           }
         });
       });
@@ -101,37 +101,50 @@ class NewsPage extends Component {
   render() {
     var newsPosts = this.state.newsPosts.map((newsPost, idx) => {
       return (
-        <li key={idx}>
-          <Link to={`/newsPosts/${newsPost._id}`}>{newsPost.title}</Link>
-          <p>Upvotes: {newsPost.upvotes}</p>
-          <button
-            onClick={() => this.handleUpvote(newsPost._id, "upvote")}
-            className="btn btn-success"
-          >
-            Upvote
-            <i className="fa fa-thumbs-up" />
-          </button>
-          &nbsp; &nbsp;
-          <button
-            onClick={() => this.handleDownvote(newsPost._id, "downvote")}
-            className="btn btn-danger"
-          >
-            Downvote <i className="fa fa-thumbs-down" />
-          </button>
-        </li>
+        <div key={idx} className="card" id="news-post-card">
+          <div className="card-body">
+            <Link className="news-post-link" to={`/newsPosts/${newsPost._id}`}>
+              {newsPost.title}
+            </Link>
+            <p className="card-text">Posted by: {newsPost.postedByUser.name}</p>
+            <p className="card-text">Likes: {newsPost.upvotes}</p>
+            <div>
+              <button
+                onClick={() => this.handleUpvote(newsPost._id, "upvote")}
+                className="btn btn-upvote"
+              >
+                <i className="fa fa-thumbs-up" />
+              </button>
+              <button
+                onClick={() => this.handleDownvote(newsPost._id, "downvote")}
+                className="btn btn-downvote"
+              >
+                <i className="fa fa-thumbs-down" />
+              </button>
+            </div>
+          </div>
+        </div>
       );
     });
     return (
       <div>
         <NavBar handleLogOut={this.handleLogOut} />
-        <CreateNews
-          handleNewsSubmit={this.handleNewsSubmit}
-          newsPost={this.state.newsPost}
-          handleNewsPostChange={this.handleNewsPostChange}
-        />
-        <h2>Member News</h2>
-        <br />
-        <ul>{newsPosts}</ul>
+        <div className="news-page-wrapper">
+          <div className="news-page">
+            <div className="createnews">
+              <CreateNews
+                handleNewsSubmit={this.handleNewsSubmit}
+                newsPost={this.state.newsPost}
+                handleNewsPostChange={this.handleNewsPostChange}
+              />
+            </div>
+            <div className="newsfeed">
+              <h1>Member News</h1>
+              <br />
+              <div className="news-posts">{newsPosts}</div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -80,14 +80,13 @@ function getProfile(req, res) {
 function editProfile(req, res) {
   User.findById(req.user._id).then(function(user) {
     const profile = user.profile[0];
-    console.log("PROFILE: ", profile.about);
-    console.log("REQ.BODY: ", req.body.user.about);
     profile.set({
       about: req.body.user.about,
       gender: req.body.user.gender,
       jobTitle: req.body.user.jobTitle,
       city: req.body.user.city,
-      country: req.body.user.country
+      country: req.body.user.country,
+      imageUrl: req.body.user.imageUrl
     });
     return user.save(() => res.status(200).json(user));
   });

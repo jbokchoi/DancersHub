@@ -123,93 +123,115 @@ class ShowNewsPage extends Component {
   render() {
     var comments = this.state.comments.map((comment, idx) => {
       return (
-        <li key={idx}>
-          <h4>Comment:</h4>
-          <p>{comment.body}</p>
-          <p>Commented On:</p>
-          {comment.createdAt}
-          <p>Commented by:</p>
-          {comment.postedByUser.name}
-          <br />
-          {this.props.user._id === comment.postedByUser._id ? (
-            <button onClick={() => this.handleCommentDelete(comment._id)}>
-              <i className="fa fa-trash" />
-            </button>
-          ) : (
-            <div />
-          )}
-        </li>
+        <div key={idx} className="card" id="comment-card">
+          <div className="card-body news">
+            <p className="card-text">{comment.body}</p>
+            <div>
+              <Link
+                to={`/whoswho/${comment.postedByUser._id}`}
+                className="user-profile-link"
+              >
+                {comment.postedByUser.name}
+              </Link>{" "}
+              <span className="card-subtitle mb-2 text-muted">
+                {new Date(comment.createdAt).toLocaleDateString()}
+              </span>
+              {this.props.user._id === comment.postedByUser._id ? (
+                <button
+                  className="trashBtn"
+                  onClick={() => this.handleCommentDelete(comment._id)}
+                >
+                  <i className="fa fa-times" />
+                </button>
+              ) : (
+                <div />
+              )}
+            </div>
+          </div>
+          <hr />
+        </div>
       );
     });
     return (
       <div>
         <NavBar handleLogOut={this.handleLogOut} />
-        <h2>{this.state.title}</h2>
-        <br />
-        <p>{this.state.body}</p>
-        {console.log(this.state)}
-        <p>Posted by:{this.state.postedByUser.name}</p>
-        <p>Posted on:{this.state.postedOn}</p>
-        {this.props.user._id === this.state.postedByUser._id ? (
+        <div className="news-page-wrapper">
+          <h4>{this.state.title}</h4>
           <Link
-            to={`/newsPosts/${this.state.id}/edit`}
-            className="btn btn-secondary"
+            className="user-profile-link"
+            to={`/whoswho/${this.state.postedByUser._id}`}
           >
-            Edit Post
-          </Link>
-        ) : (
-          <div />
-        )}
-        &nbsp; &nbsp;
-        {this.props.user._id === this.state.postedByUser._id ? (
-          <button
-            onClick={() => this.handleDelete(this.state.id)}
-            className="btn btn-info"
-          >
-            Delete Post
-            <i className="fa fa-trash" />
-          </button>
-        ) : (
-          <div />
-        )}
-        <br />
-        <br />
-        <br />
-        <hr />
-        <p>Upvotes: {this.state.upvotes}</p>
-        <button
-          onClick={() => this.handleUpvote(this.state.id, "upvote")}
-          className="btn btn-success"
-        >
-          Upvote
-          <i className="fa fa-thumbs-up" />
-        </button>
-        &nbsp; &nbsp;
-        <button
-          onClick={() => this.handleDownvote(this.state.id, "downvote")}
-          className="btn btn-danger"
-        >
-          Downvote <i className="fa fa-thumbs-down" />
-        </button>
-        <br />
-        <hr />
-        {this.state.comments.length <= 0 ? (
-          <h3>No Comments</h3>
-        ) : (
-          <ul>{comments}</ul>
-        )}
-        <br />
-        <hr />
-        <form onSubmit={this.handleSubmit}>
-          <label>Add Comment</label>
+            Posted by: {this.state.postedByUser.name}{" "}
+          </Link>{" "}
+          <p>Posted on: {new Date(this.state.postedOn).toLocaleDateString()}</p>
           <br />
-          <textarea
-            onChange={this.handleCommentBody}
-            value={this.state.CommentBody}
-          />
+          <p className="col-8">{this.state.body}</p>
+          <div>
+            {this.props.user._id === this.state.postedByUser._id ? (
+              <Link
+                to={`/newsPosts/${this.state.id}/edit`}
+                className="btn news-post-link"
+              >
+                Edit Post
+              </Link>
+            ) : (
+              <div />
+            )}
+            {this.props.user._id === this.state.postedByUser._id ? (
+              <button
+                onClick={() => this.handleDelete(this.state.id)}
+                className="btn news-post-link"
+              >
+                Delete Post
+              </button>
+            ) : (
+              <div />
+            )}
+          </div>
           <br />
-          <input type="submit" value="Add Comment" className="btn btn-dark" />
-        </form>
+          <div className="col-8">
+            <h3>Likes: {this.state.upvotes}</h3>
+            <button
+              onClick={() => this.handleUpvote(this.state.id, "upvote")}
+              className="btn btn-upvote"
+            >
+              <i className="fa fa-thumbs-up" />
+            </button>
+            &nbsp; &nbsp;
+            <button
+              onClick={() => this.handleDownvote(this.state.id, "downvote")}
+              className="btn btn-downvote"
+            >
+              <i className="fa fa-thumbs-down" />
+            </button>
+          </div>
+          <br />
+          <hr />
+          {this.state.comments.length <= 0 ? (
+            <h4>No Comments</h4>
+          ) : (
+            <div className="col-8">
+              <h4>Comments</h4>
+              <div>{comments}</div>
+            </div>
+          )}
+          <br />
+          <hr />
+          <form className="col-8" onSubmit={this.handleSubmit}>
+            <label>Add Comment</label>
+            <br />
+            <textarea
+              onChange={this.handleCommentBody}
+              value={this.state.CommentBody}
+              className="form-control profile-forms"
+              autoComplete="off"
+              type="text"
+              required={true}
+            />
+            <br />
+            <input type="submit" value="Add Comment" className="btn btn-dark" />
+          </form>
+        </div>
       </div>
     );
   }

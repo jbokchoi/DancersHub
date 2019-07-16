@@ -50,9 +50,12 @@ function createNewsPost(req, res) {
 }
 
 function getAllNewsPosts(req, res) {
-  newsPost.find({}).then(function(newsPosts) {
-    res.status(200).json(newsPosts);
-  });
+  newsPost
+    .find({})
+    .populate("postedByUser")
+    .then(function(newsPosts) {
+      res.status(200).json(newsPosts);
+    });
 }
 
 function upvoteNewsPost(req, res) {

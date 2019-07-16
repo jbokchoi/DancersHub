@@ -1,4 +1,5 @@
-.whos-who-page {
+.whos-who-page,
+.user-show-page {
   margin-top: 5vh;
   display: flex;
   flex-direction: column;
@@ -13,10 +14,19 @@
   align-items: center;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #whos-who-card {
   width: 18rem;
   margin: 5px;
   border: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .WhosWhoLinks {
@@ -32,4 +42,8 @@
   color: #f2f2f2;
   background-color: rgba(136, 3, 74, 0.7);
   text-decoration: none;
+}
+
+.profilePic {
+  width: 8rem;
 }

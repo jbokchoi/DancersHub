@@ -75,120 +75,127 @@ class UserShowPage extends Component {
     return (
       <div>
         <NavBar handleLogOut={this.handleLogOut} />
-        <h1>{this.state.user.name}</h1>
-        <table className="table">
-          <thead>
-            <tr>
-              <th colSpan="2">Basic Profile</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>About:</th>
-              <td>{this.state.profile.about}</td>
-            </tr>
-            <tr>
-              <th>Job Title:</th>
-              <td>{this.state.profile.jobTitle}</td>
-            </tr>
-            <tr>
-              <th>City:</th>
-              <td>{this.state.profile.city}</td>
-            </tr>
-            <tr>
-              <th>Country:</th>
-              <td>{this.state.profile.country}</td>
-            </tr>
-          </tbody>
-        </table>
-        <br />
-        <br />
-        <table className="table">
-          <thead>
-            <tr>
-              <th colSpan="2">Professional Areas</th>
-            </tr>
-          </thead>
+        <div className="user-show-page">
+          <h1>{this.state.user.name}</h1>
+          <table className="col-8 justify-content-center table">
+            <thead>
+              {this.state.profile.imageUrl ? (
+                <tr>
+                  <td colSpan="2">
+                    <img
+                      className="col-4"
+                      src={`${this.state.profile.imageUrl}`}
+                      alt="profileImage"
+                    />
+                  </td>
+                </tr>
+              ) : (
+                <td colSpan="2">
+                  <img
+                    className="profilePic"
+                    src={"https://i.imgur.com/zJfbqxe.jpg"}
+                    alt="profileImage"
+                  />
+                </td>
+              )}
+              <tr>
+                <th colSpan="2">Basic Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>About:</th>
+                <td>{this.state.profile.about}</td>
+              </tr>
+              <tr>
+                <th>Job Title:</th>
+                <td>{this.state.profile.jobTitle}</td>
+              </tr>
+              <tr>
+                <th>City:</th>
+                <td>{this.state.profile.city}</td>
+              </tr>
+              <tr>
+                <th>Country:</th>
+                <td>{this.state.profile.country}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <br />
           {this.state.professionalAreas.length <= 0 ? (
-            <tbody>
-              <tr>
-                <td>No Professional Areas Listed </td>
-              </tr>
-            </tbody>
+            <div />
           ) : (
-            <tbody>{profAreas}</tbody>
+            <div>
+              <h4>Professional Areas</h4>
+              <table className="col-12 justify-content-center table">
+                <tbody>{profAreas}</tbody>
+              </table>
+            </div>
           )}
-        </table>
-        <br />
-        <br />
-        <table className="table">
-          <thead>
-            <tr>
-              <th colSpan="2">Contact Details</th>
-            </tr>
-            <tr>
-              <th>Type of Contact</th>
-              <th>URL</th>
-            </tr>
-          </thead>
+          <br />
+          <br />
           {this.state.contactDetails.length <= 0 ? (
-            <tbody>
-              <tr>
-                <td>No Contact Details</td>
-              </tr>
-            </tbody>
+            <div />
           ) : (
-            <tbody>{contactDetails}</tbody>
+            <div>
+              <h4>Contact Details</h4>
+              <table className="col-12 justify-content-center table">
+                <thead>
+                  <tr>
+                    <th>Type of Contact</th>
+                    <th>URL</th>
+                  </tr>
+                </thead>
+
+                <tbody>{contactDetails}</tbody>
+              </table>
+            </div>
           )}
-        </table>
-        <br />
-        <br />
-        <table className="table">
-          <thead>
-            <tr>
-              <th colSpan="2">Qualification Details</th>
-            </tr>
-            <tr>
-              <th>School/Academic Programme Name</th>
-              <th>Graduation Year</th>
-              <th>Qualification Location</th>
-            </tr>
-          </thead>
+          <br />
+          <br />
           {this.state.qualifications.length <= 0 ? (
-            <tbody>
-              <tr>
-                <td>No Qualification Details</td>
-              </tr>
-            </tbody>
+            <div />
           ) : (
-            <tbody>{qualifications}</tbody>
+            <div>
+              <h4>Qualification Details</h4>
+              <table className="col-12 justify-content-center table">
+                <thead>
+                  <tr>
+                    <th>School/Academic Programme Name</th>
+                    <th>Graduation Year</th>
+                    <th>Qualification Location</th>
+                  </tr>
+                </thead>
+
+                <tbody>{qualifications}</tbody>
+              </table>
+            </div>
           )}
-        </table>
-        <br />
-        <br />
-        <table className="table">
-          <thead>
-            <tr>
-              <th colSpan="2">Employment Details</th>
-            </tr>
-            <tr>
-              <th>Year From</th>
-              <th>Year To</th>
-              <th>Name of Company</th>
-              <th>Job Title</th>
-              <th>Employment Location</th>
-            </tr>
-          </thead>
+          <br />
+          <br />
           {this.state.employments.length <= 0 ? (
-            <tbody>
-              <tr>
-                <td>No Employment Details</td>
-              </tr>
-            </tbody>
+            <div />
           ) : (
-            <tbody>{employments}</tbody>
+            <div>
+              <h4>Employment Details</h4>
+              <table className="col-12 justify-content-center table">
+                <thead>
+                  <tr>
+                    <th>Year From</th>
+                    <th>Year To</th>
+                    <th>Name of Company</th>
+                    <th>Job Title</th>
+                    <th>Employment Location</th>
+                  </tr>
+                </thead>
+                <tbody>{employments}</tbody>
+              </table>
+            </div>
           )}
-        </table>
+        </div>
+        <br />
+        <br />
       </div>
     );
   }

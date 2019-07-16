@@ -122,6 +122,8 @@ class EditProfilePage extends Component {
             </form>
           </div>
         </div>
+        <br />
+        <br />
       </div>
     );
   }

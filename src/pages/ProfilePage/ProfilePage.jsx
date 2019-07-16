@@ -474,7 +474,15 @@ class ProfilePage extends Component {
           <br />
           <h4>Professional Areas of Work</h4>
           <table className="col-8 justify-content-center table profileTable">
-            <tbody>{profAreas}</tbody>
+            {this.state.profAreas.length <= 0 ? (
+              <tbody>
+                <tr>
+                  <td>add a professional area of work</td>
+                </tr>
+              </tbody>
+            ) : (
+              <tbody>{profAreas}</tbody>
+            )}
           </table>
           <ProfAreas
             profArea={this.state.profArea}
@@ -492,7 +500,15 @@ class ProfilePage extends Component {
                 <th />
               </tr>
             </thead>
-            <tbody>{contactDetails}</tbody>
+            {this.state.contactDetails.length <= 0 ? (
+              <tbody>
+                <tr>
+                  <td colSpan="3">add contact details</td>
+                </tr>
+              </tbody>
+            ) : (
+              <tbody>{contactDetails}</tbody>
+            )}
           </table>
           <ContactDetails
             contactDetail={this.state.contactDetail}
@@ -511,7 +527,15 @@ class ProfilePage extends Component {
                 <th />
               </tr>
             </thead>
-            <tbody>{qualifications}</tbody>
+            {this.state.qualifications.length <= 0 ? (
+              <tbody>
+                <tr>
+                  <td colSpan="4">add qualification details</td>
+                </tr>
+              </tbody>
+            ) : (
+              <tbody>{qualifications}</tbody>
+            )}
           </table>
           <Qualifications
             qualification={this.state.qualification}
@@ -532,7 +556,15 @@ class ProfilePage extends Component {
                 <th />
               </tr>
             </thead>
-            <tbody>{employments}</tbody>
+            {this.state.employments.length <= 0 ? (
+              <tbody>
+                <tr>
+                  <td colSpan="6">add employment details</td>
+                </tr>
+              </tbody>
+            ) : (
+              <tbody>{employments}</tbody>
+            )}
           </table>
           <Employment
             employment={this.state.employment}
