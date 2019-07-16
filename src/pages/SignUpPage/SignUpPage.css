@@ -1,7 +1,12 @@
 .SignupPage {
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.SignupPageDiv {
+  width: 100vw;
 }

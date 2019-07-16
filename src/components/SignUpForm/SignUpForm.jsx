@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
+import "./SignUpForm.css";
 
 class SignupForm extends Component {
   constructor(props) {
@@ -49,14 +50,14 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div>
-        <header className="header-footer">Sign Up</header>
+      <div className="SignupPage">
+        <h1>Sign Up Page</h1>
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
               <input
                 type="text"
-                className="form-control"
+                className="form-control Login-SignUpForm"
                 placeholder="Name"
                 value={this.state.name}
                 name="name"
@@ -65,22 +66,25 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
               <input
                 type="email"
-                className="form-control"
+                className="form-control Login-SignUpForm"
                 placeholder="Email"
                 value={this.state.email}
                 name="email"
                 onChange={this.handleChange}
               />
+              <small id="emailHelp" className="form-text text-muted">
+                We'll never share your email with anyone else.
+              </small>
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
               <input
                 type="password"
-                className="form-control"
+                className="form-control Login-SignUpForm"
                 placeholder="Password"
                 value={this.state.password}
                 name="password"
@@ -89,10 +93,10 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12">
+            <div className="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
               <input
                 type="password"
-                className="form-control"
+                className="form-control Login-SignUpForm"
                 placeholder="Confirm Password"
                 value={this.state.passwordConf}
                 name="passwordConf"
@@ -103,13 +107,15 @@ class SignupForm extends Component {
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button
-                className="btn btn-default"
+                className="btn btn-default LogIn-SignUpBtn"
                 disabled={this.isFormInvalid()}
               >
                 Sign Up
               </button>
               &nbsp;&nbsp;
-              <Link to="/">Cancel</Link>
+              <Link to="/" className="btn btn-default LogIn-SignUpBtn">
+                Cancel
+              </Link>
             </div>
           </div>
         </form>

@@ -1,4 +1,44 @@
 .LoginPage {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.LoginPageDiv {
+  width: 100vw;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: #ffa94c;
+  font-weight: 600;
+}
+
+#emailHelp {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.Login-SignUpForm {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #ffa94c;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.LogIn-SignUpBtn {
+  font-size: 18px;
+  color: #082c44;
+  text-decoration: none;
+}
+
+.LogIn-SignUpBtn:hover {
+  background-color: rgba(136, 3, 74, 0.7);
+  text-decoration: none;
+  color: #f2f2f2;
 }

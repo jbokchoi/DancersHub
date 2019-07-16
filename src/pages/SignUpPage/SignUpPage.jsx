@@ -15,8 +15,9 @@ class SignUpPage extends Component {
   render() {
     return (
       <div className="SignUpPage">
-        <h1>Sign Up Page</h1>
-        <SignUpForm {...this.props} />
+        <div className="SignupPageDiv">
+          <SignUpForm {...this.props} />
+        </div>
       </div>
     );
   }

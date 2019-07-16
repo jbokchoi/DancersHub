@@ -17,11 +17,11 @@ class HomePage extends Component {
           src="https://i.imgur.com/W70jaOe.png"
           alt="DH Logo"
         />
-        <Link className="HomePageLinks" to="/signup">
+        <Link className="btn btn-default HomePageLinks" to="/signup">
           Sign Up
         </Link>
-
-        <Link className="HomePageLinks" to="/login">
+        <span className="HomePageLinks">|</span>
+        <Link className="btn btn-default HomePageLinks" to="/login">
           Log In
         </Link>
       </div>

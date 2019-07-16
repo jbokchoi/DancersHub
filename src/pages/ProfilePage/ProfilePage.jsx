@@ -16,6 +16,7 @@ import {
   deleteQualification,
   deleteEmployment
 } from "../../utils/profileService";
+import "./ProfilePage.css";
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class ProfilePage extends Component {
       profArea: "",
       contactDetails: [],
       contactDetail: {
-        name: "website",
+        name: "",
         link: ""
       },
       qualifications: [],
@@ -55,7 +56,7 @@ class ProfilePage extends Component {
         profAreas: json.profile[0].professionalAreas,
         profArea: "",
         contactDetails: json.profile[0].contactDetails,
-        contactDetail: { name: "website", link: "" },
+        contactDetail: { name: "", link: "" },
         qualifications: json.profile[0].qualifications,
         qualification: {
           schoolOrAcademicProgramme: "",
@@ -84,7 +85,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -118,7 +119,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -156,7 +157,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -194,7 +195,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -231,7 +232,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -260,7 +261,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -289,7 +290,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -318,7 +319,7 @@ class ProfilePage extends Component {
           profAreas: json.profile[0].professionalAreas,
           profArea: "",
           contactDetails: json.profile[0].contactDetails,
-          contactDetail: { name: "website", link: "" },
+          contactDetail: { name: "", link: "" },
           qualifications: json.profile[0].qualifications,
           qualification: {
             schoolOrAcademicProgramme: "",
@@ -342,10 +343,13 @@ class ProfilePage extends Component {
     var profAreas = this.state.profAreas.map((profArea, profAreaId) => {
       return (
         <tr key={profAreaId}>
-          <td>{profArea.profArea}</td>
           <td>
-            <button onClick={() => this.handleProfAreaDelete(profArea._id)}>
-              <i className="fa fa-trash" />
+            {profArea.profArea}
+            <button
+              onClick={() => this.handleProfAreaDelete(profArea._id)}
+              className="trashBtn"
+            >
+              <i className="fa fa-times" />
             </button>
           </td>
         </tr>
@@ -362,8 +366,9 @@ class ProfilePage extends Component {
                 onClick={() =>
                   this.handleContactDetailDelete(contactDetail._id)
                 }
+                className="trashBtn"
               >
-                <i className="fa fa-trash" />
+                <i className="fa fa-times" />
               </button>
             </td>
           </tr>
@@ -382,8 +387,9 @@ class ProfilePage extends Component {
                 onClick={() =>
                   this.handleQualificationDelete(qualification._id)
                 }
+                className="trashBtn"
               >
-                <i className="fa fa-trash" />
+                <i className="fa fa-times" />
               </button>
             </td>
           </tr>
@@ -399,8 +405,11 @@ class ProfilePage extends Component {
           <td>{employment.jobTitle}</td>
           <td>{employment.employmentLocation}</td>
           <td>
-            <button onClick={() => this.handleEmploymentDelete(employment._id)}>
-              <i className="fa fa-trash" />
+            <button
+              onClick={() => this.handleEmploymentDelete(employment._id)}
+              className="trashBtn"
+            >
+              <i className="fa fa-times" />
             </button>
           </td>
         </tr>
@@ -409,101 +418,108 @@ class ProfilePage extends Component {
     return (
       <div>
         <NavBar handleLogOut={this.props.handleLogOut} />
-        <h1>hi from profile page</h1>
-        <Link to="/editProfile">Edit Profile</Link>
-        <table className="table">
-          <tbody>
-            <tr>
-              <th>About</th>
-              <td>{this.state.profile.about}</td>
-            </tr>
-            <tr>
-              <th>Gender</th>
-              <td>{this.state.profile.gender}</td>
-            </tr>
-            <tr>
-              <th>Job Title</th>
-              <td>{this.state.profile.jobTitle}</td>
-            </tr>
-            <tr>
-              <th>City</th>
-              <td>{this.state.profile.city}</td>
-            </tr>
-            <tr>
-              <th>Country</th>
-              <td>{this.state.profile.country}</td>
-            </tr>
-          </tbody>
-        </table>
-        <br />
-        <h4>Professional Areas of Work</h4>
-        <table className="table">
-          <tbody>{profAreas}</tbody>
-        </table>
-        <ProfAreas
-          profArea={this.state.profArea}
-          handleProfAreaSubmit={this.handleProfAreaSubmit}
-          handleProfAreaChange={this.handleProfAreaChange}
-        />
-        <br />
-        <hr />
-        <h4>Contact Details</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Type of Contact</th>
-              <th>URL</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>{contactDetails}</tbody>
-        </table>
-        <ContactDetails
-          contactDetail={this.state.contactDetail}
-          handleContactDetailSubmit={this.handleContactDetailSubmit}
-          handleContactDetailChange={this.handleContactDetailChange}
-        />
-        <br />
-        <hr />
-        <h4>Qualifications</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>School/Academic Programme Name</th>
-              <th>Graduation Year</th>
-              <th>Qualification Location</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>{qualifications}</tbody>
-        </table>
-        <Qualifications
-          qualification={this.state.qualification}
-          handleQualificationSubmit={this.handleQualificationSubmit}
-          handleQualificationChange={this.handleQualificationChange}
-        />
-        <br />
-        <hr />
-        <h4>Employment</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Year From</th>
-              <th>Year To</th>
-              <th>Name of Company</th>
-              <th>Job Title</th>
-              <th>Employment Location</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>{employments}</tbody>
-        </table>
-        <Employment
-          employment={this.state.employment}
-          handleEmploymentSubmit={this.handleEmploymentSubmit}
-          handleEmploymentChange={this.handleEmploymentChange}
-        />
-        <hr />
+        <div className="profilePage">
+          <h1>Welcome, {this.props.user.name}!</h1>
+
+          <table className="col-8 justify-content-center table table-bordered profileTable">
+            <tbody>
+              <tr>
+                <th colSpan="2">About</th>
+              </tr>
+              <tr>
+                <td colSpan="2">{this.state.profile.about}</td>
+              </tr>
+              <tr>
+                <th>Gender</th>
+                <td>{this.state.profile.gender}</td>
+              </tr>
+              <tr>
+                <th>Job Title</th>
+                <td>{this.state.profile.jobTitle}</td>
+              </tr>
+              <tr>
+                <th>City</th>
+                <td>{this.state.profile.city}</td>
+              </tr>
+              <tr>
+                <th>Country</th>
+                <td>{this.state.profile.country}</td>
+              </tr>
+            </tbody>
+          </table>
+          <Link to="/editProfile" className="btn btn-default submitBtn">
+            Edit Profile Details
+          </Link>
+          <br />
+          <h4>Professional Areas of Work</h4>
+          <table className="col-8 justify-content-center table profileTable">
+            <tbody>{profAreas}</tbody>
+          </table>
+          <ProfAreas
+            profArea={this.state.profArea}
+            handleProfAreaSubmit={this.handleProfAreaSubmit}
+            handleProfAreaChange={this.handleProfAreaChange}
+          />
+          <br />
+          <hr />
+          <h4>Contact Details</h4>
+          <table className="col-8 justify-content-center table profileTable">
+            <thead>
+              <tr>
+                <th>Type of Contact</th>
+                <th>URL</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>{contactDetails}</tbody>
+          </table>
+          <ContactDetails
+            contactDetail={this.state.contactDetail}
+            handleContactDetailSubmit={this.handleContactDetailSubmit}
+            handleContactDetailChange={this.handleContactDetailChange}
+          />
+          <br />
+          <hr />
+          <h4>Qualifications</h4>
+          <table className="col-8 justify-content-center table profileTable">
+            <thead>
+              <tr>
+                <th>School/Academic Programme Name</th>
+                <th>Graduation Year</th>
+                <th>Qualification Location</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>{qualifications}</tbody>
+          </table>
+          <Qualifications
+            qualification={this.state.qualification}
+            handleQualificationSubmit={this.handleQualificationSubmit}
+            handleQualificationChange={this.handleQualificationChange}
+          />
+          <br />
+          <hr />
+          <h4>Employment</h4>
+          <table className="col-8 justify-content-center table profileTable">
+            <thead>
+              <tr>
+                <th>Year From</th>
+                <th>Year To</th>
+                <th>Name of Company</th>
+                <th>Job Title</th>
+                <th>Employment Location</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>{employments}</tbody>
+          </table>
+          <Employment
+            employment={this.state.employment}
+            handleEmploymentSubmit={this.handleEmploymentSubmit}
+            handleEmploymentChange={this.handleEmploymentChange}
+          />
+          <hr />
+        </div>
       </div>
     );
   }
