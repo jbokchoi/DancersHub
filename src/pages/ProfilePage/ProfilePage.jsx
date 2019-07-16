@@ -421,8 +421,29 @@ class ProfilePage extends Component {
         <div className="profilePage">
           <h1>Welcome, {this.props.user.name}!</h1>
 
-          <table className="col-8 justify-content-center table table-borderless table-condensed table-hover profileTable">
+          <table className="col-8 justify-content-center table table-borderless table-condensed profileTable">
             <tbody>
+              {this.state.profile.imageUrl ? (
+                <tr>
+                  <th colSpan="2">
+                    <img
+                      className="col-4"
+                      src={`${this.state.profile.imageUrl}`}
+                      alt="profileImage"
+                    />
+                  </th>
+                </tr>
+              ) : (
+                <tr>
+                  <th colSpan="2">
+                    <img
+                      className="col-4"
+                      src={"https://i.imgur.com/zJfbqxe.jpg"}
+                      alt="profileImage"
+                    />
+                  </th>
+                </tr>
+              )}
               <tr>
                 <th colSpan="2">About</th>
               </tr>

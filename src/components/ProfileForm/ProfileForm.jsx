@@ -10,7 +10,8 @@ class ProfileForm extends Component {
       gender: "female",
       jobTitle: "",
       city: "",
-      country: ""
+      country: "",
+      imageUrl: ""
     };
   }
 
@@ -79,6 +80,15 @@ class ProfileForm extends Component {
               onChange={this.handleChange}
             />
             <br />
+            <label>Profile Image URL </label>
+            <br />
+            <input
+              className="form-control profile-forms"
+              onChange={this.handleChange}
+              name="imageUrl"
+              value={this.state.imageUrl}
+              required={true}
+            />
             <button className="btn btn-default submitBtn">Sign Up</button>
           </form>
         </div>

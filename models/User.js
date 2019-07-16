@@ -66,6 +66,7 @@ var profileSchema = new Schema(
     jobTitle: String,
     city: String,
     country: String,
+    imageUrl: String,
     professionalAreas: [professionalAreasSchema],
     contactDetails: [contactDetailSchema],
     qualifications: [qualificationSchema],

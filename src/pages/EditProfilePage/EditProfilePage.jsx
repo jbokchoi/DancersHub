@@ -14,7 +14,8 @@ class EditProfilePage extends Component {
       gender: "",
       jobTitle: "",
       city: "",
-      country: ""
+      country: "",
+      imageUrl: ""
     };
   }
 
@@ -29,7 +30,8 @@ class EditProfilePage extends Component {
         gender: user.profile[0].gender,
         jobTitle: user.profile[0].jobTitle,
         city: user.profile[0].city,
-        country: user.profile[0].country
+        country: user.profile[0].country,
+        imageUrl: user.profile[0].imageUrl
       });
     });
   }
@@ -104,6 +106,16 @@ class EditProfilePage extends Component {
                 value={this.state.country}
                 onChange={this.handleChange}
                 autoComplete="off"
+              />
+              <br />
+              <label>Profile Image URL </label>
+              <br />
+              <input
+                className="form-control profile-forms"
+                onChange={this.handleChange}
+                name="imageUrl"
+                value={this.state.imageUrl}
+                required={true}
               />
               <br />
               <button className="btn btn-default submitBtn">Submit Edit</button>
