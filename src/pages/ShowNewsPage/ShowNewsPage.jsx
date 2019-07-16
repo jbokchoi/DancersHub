@@ -13,6 +13,7 @@ class ShowNewsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: props.user,
       id: "",
       title: "",
       body: "",
@@ -21,13 +22,12 @@ class ShowNewsPage extends Component {
       comments: [],
       commentBody: "",
       commentedOn: "",
-      commentPostedBy: props.user,
+      commentPostedBy: "",
       upvotes: ""
     };
   }
 
   componentDidMount() {
-    console.log(this.props);
     var id = this.props.match.params.id;
     var self = this;
 
@@ -113,8 +113,6 @@ class ShowNewsPage extends Component {
 
   handleCommentDelete = commentId => {
     var self = this;
-    // var id = this.props.match.params.id;
-    console.log(commentId);
     deleteComment(this.props.match.params.id, commentId).then(function() {
       self.props.history.push(`/news`);
     });
@@ -122,43 +120,56 @@ class ShowNewsPage extends Component {
 
   render() {
     var comments = this.state.comments.map((comment, idx) => {
-      console.log("Comment: ", comment);
-      console.log("newspost: ", this.props.match.params.id);
       return (
         <li key={idx}>
           <h4>Comment:</h4>
           <p>{comment.body}</p>
           <p>Commented On:</p>
           {comment.createdAt}
-          <button onClick={() => this.handleCommentDelete(comment._id)}>
-            <i className="fa fa-trash" />
-          </button>
+          <p>Commented by:</p>
+          {comment.postedByUser.name}
+          <br />
+          {this.props.user._id === this.state.postedByUser._id ? (
+            <button onClick={() => this.handleCommentDelete(comment._id)}>
+              <i className="fa fa-trash" />
+            </button>
+          ) : (
+            <div />
+          )}
         </li>
       );
     });
     return (
       <div>
-        <NavBar />
+        <NavBar handleLogOut={this.handleLogOut} />
         <h2>{this.state.title}</h2>
         <br />
         <p>{this.state.body}</p>
         {console.log(this.state)}
         <p>Posted by:{this.state.postedByUser.name}</p>
         <p>Posted on:{this.state.postedOn}</p>
-        <Link
-          to={`/newsPosts/${this.state.id}/edit`}
-          className="btn btn-secondary"
-        >
-          Edit Post
-        </Link>
+        {this.props.user._id === this.state.postedByUser._id ? (
+          <Link
+            to={`/newsPosts/${this.state.id}/edit`}
+            className="btn btn-secondary"
+          >
+            Edit Post
+          </Link>
+        ) : (
+          <div />
+        )}
         &nbsp; &nbsp;
-        <button
-          onClick={() => this.handleDelete(this.state.id)}
-          className="btn btn-info"
-        >
-          Delete Post
-          <i className="fa fa-trash" />
-        </button>
+        {this.props.user._id === this.state.postedByUser._id ? (
+          <button
+            onClick={() => this.handleDelete(this.state.id)}
+            className="btn btn-info"
+          >
+            Delete Post
+            <i className="fa fa-trash" />
+          </button>
+        ) : (
+          <div />
+        )}
         <br />
         <br />
         <br />

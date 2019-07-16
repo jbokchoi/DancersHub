@@ -74,10 +74,8 @@ class UserShowPage extends Component {
     });
     return (
       <div>
-        <NavBar />
-        {console.log("THIS WORKED!", this.state.profile[0])}
+        <NavBar handleLogOut={this.handleLogOut} />
         <h1>{this.state.user.name}</h1>
-        {console.log(this.state.professionalAreas)}
         <table className="table">
           <thead>
             <tr>

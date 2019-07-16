@@ -50,8 +50,6 @@ class ProfilePage extends Component {
   componentDidMount() {
     var self = this;
     userService.getProfile().then(function(json) {
-      console.log(json);
-      console.log(json.profile[0].professionalAreas);
       self.setState({
         profile: json.profile[0],
         profAreas: json.profile[0].professionalAreas,
@@ -225,10 +223,7 @@ class ProfilePage extends Component {
   };
 
   handleProfAreaDelete = profAreaId => {
-    console.log("Delete Handle Hit");
-
     var self = this;
-    console.log("DELETE", profAreaId);
     deleteProfArea(profAreaId).then(function() {
       userService.getProfile().then(function(json) {
         self.setState({
@@ -257,8 +252,6 @@ class ProfilePage extends Component {
   };
 
   handleContactDetailDelete = contactDetailId => {
-    console.log("Delete Handle Hit");
-
     var self = this;
     deleteContactDetail(contactDetailId).then(function() {
       userService.getProfile().then(function(json) {
@@ -288,7 +281,6 @@ class ProfilePage extends Component {
   };
 
   handleQualificationDelete = qualificationId => {
-    console.log("Delete Handle Hit");
     var self = this;
     deleteQualification(qualificationId).then(function() {
       userService.getProfile().then(function(json) {
@@ -318,7 +310,6 @@ class ProfilePage extends Component {
   };
 
   handleEmploymentDelete = employmentId => {
-    console.log("Delete Handle Hit");
     var self = this;
     deleteEmployment(employmentId).then(function() {
       userService.getProfile().then(function(json) {
@@ -349,7 +340,6 @@ class ProfilePage extends Component {
 
   render() {
     var profAreas = this.state.profAreas.map((profArea, profAreaId) => {
-      console.log(profArea);
       return (
         <tr key={profAreaId}>
           <td>{profArea.profArea}</td>
@@ -513,7 +503,6 @@ class ProfilePage extends Component {
           handleEmploymentSubmit={this.handleEmploymentSubmit}
           handleEmploymentChange={this.handleEmploymentChange}
         />
-        {console.log(employments)}
         <hr />
       </div>
     );

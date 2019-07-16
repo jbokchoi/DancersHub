@@ -74,10 +74,14 @@ function downvoteNewsPost(req, res) {
 }
 
 function addComment(req, res) {
-  newsPost.findById(req.params.id).then(function(newsPost) {
-    newsPost.comments.unshift(req.body);
-    newsPost.save(function(newsPost) {
-      res.status(200).json(newsPost);
+  User.findById(req.user._id).then(function(user) {
+    newsPost.findById(req.params.id).then(function(newsPost) {
+      req.body["postedByUser"] = user._id;
+      console.log(req.body);
+      newsPost.comments.unshift(req.body);
+      newsPost.save(function(newsPost) {
+        res.status(200).json(newsPost);
+      });
     });
   });
 }

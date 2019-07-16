@@ -13,7 +13,6 @@ class WhosWhoPage extends Component {
 
   componentDidMount() {
     var self = this;
-    console.log("USERS :");
     userService.getAllUsers().then(function(json) {
       self.setState({
         users: json
@@ -33,7 +32,7 @@ class WhosWhoPage extends Component {
     });
     return (
       <div>
-        <NavBar />
+        <NavBar handleLogOut={this.handleLogOut} />
         <h1>hello from WhosWhoPage</h1>
         <ul>{users}</ul>
       </div>

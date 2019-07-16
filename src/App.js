@@ -30,11 +30,8 @@ class App extends Component {
   };
 
   handleLogOut = () => {
-    console.log("handlelogout called");
     userService.logout();
-    console.log("logged out");
     this.setState({ user: null });
-    console.log(this.state.user);
   };
 
   render() {

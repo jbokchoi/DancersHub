@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
 
 class ProfileForm extends Component {
@@ -21,7 +20,6 @@ class ProfileForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("handle submit profile hit");
     userService.createProfile(this.state).then(function() {
       window.location = "/profile";
     });

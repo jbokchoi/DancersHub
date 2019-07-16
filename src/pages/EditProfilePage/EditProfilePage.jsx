@@ -49,7 +49,7 @@ class EditProfilePage extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar handleLogOut={this.handleLogOut} />
         <h1>Edit Profile</h1>
         <hr />
         <form onSubmit={this.handleSubmit}>

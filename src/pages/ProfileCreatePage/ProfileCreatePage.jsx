@@ -12,7 +12,7 @@ class ProfileCreatePage extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar handleLogOut={this.handleLogOut} />
         <ProfileForm />
         {console.log(this.state.user)}
         {console.log(this.props)}

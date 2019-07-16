@@ -123,7 +123,7 @@ class NewsPage extends Component {
     });
     return (
       <div>
-        <NavBar />
+        <NavBar handleLogOut={this.handleLogOut} />
         <CreateNews
           handleNewsSubmit={this.handleNewsSubmit}
           newsPost={this.state.newsPost}

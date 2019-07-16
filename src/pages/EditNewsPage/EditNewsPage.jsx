@@ -44,7 +44,7 @@ class EditNewsPage extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar handleLogOut={this.handleLogOut} />
         <h4>Edit News Post</h4>
         <hr />
         <form onSubmit={this.handleSubmit}>
