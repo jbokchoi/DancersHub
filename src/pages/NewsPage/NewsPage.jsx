@@ -74,15 +74,12 @@ class NewsPage extends Component {
 
   handleNewsPostChange = e => {
     var newsPost = { ...this.state.newsPost };
-    console.log("newsPost: ", this.state.newsPost);
     newsPost[e.target.name] = e.target.value;
     this.setState({ newsPost });
   };
 
   handleNewsSubmit = e => {
     var self = this;
-    console.log("create news submit hit");
-    console.log("handle news submit:", this.state);
     e.preventDefault();
     createNewsPost(this.state).then(function() {
       getNewsPosts().then(function(json) {

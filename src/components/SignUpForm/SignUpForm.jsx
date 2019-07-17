@@ -26,17 +26,11 @@ class SignupForm extends Component {
     e.preventDefault();
     try {
       await userService.signup(this.state);
-      console.log("signup worked");
       this.props.handleSignupOrLogin();
-      console.log("handlesignup worked");
-      // Successfully signed up - show GamePage
-      // this.props.history.push("/");
       window.location = "/createProfile";
-      console.log("window worked");
     } catch (err) {
       // Invalid user data (probably duplicate email)
-      // this.props.updateMessage(err.message);
-      console.log("shit broke");
+      console.log("err on sign up");
     }
   };
 

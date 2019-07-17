@@ -3,7 +3,6 @@ import tokenService from "./tokenService";
 const BASE_URL = "/api/";
 
 function signup(user) {
-  console.log(user);
   return (
     fetch(BASE_URL + "signup", {
       method: "POST",
@@ -25,7 +24,6 @@ function getUser() {
 }
 
 function logout() {
-  console.log("logout reached");
   tokenService.removeToken();
 }
 
@@ -71,7 +69,6 @@ function getUserProfile(id) {
 /*--- Profile related functions --- */
 
 function createProfile(user) {
-  console.log("create profile service hit");
   return fetch(BASE_URL + `user`, {
     method: "POST",
     headers: {
@@ -95,7 +92,6 @@ function getProfile(user) {
 }
 
 function editProfile(user) {
-  console.log("edit service hit");
   return fetch(BASE_URL + `user`, {
     method: "PUT",
     body: JSON.stringify({ user }),

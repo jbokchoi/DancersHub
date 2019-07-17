@@ -28,7 +28,6 @@ function deleteNewsPost(req, res) {
 }
 
 function getOneNewsPost(req, res) {
-  console.log("got a news story!");
   newsPost
     .findById(req.params.id)
     .populate("postedByUser")
@@ -39,7 +38,6 @@ function getOneNewsPost(req, res) {
 }
 
 function createNewsPost(req, res) {
-  console.log(req);
   User.findById(req.user._id).exec(function(err, user) {
     newsPost.create(req.body, function(err, newsPost) {
       newsPost.postedByUser = user._id;
@@ -80,7 +78,6 @@ function addComment(req, res) {
   User.findById(req.user._id).then(function(user) {
     newsPost.findById(req.params.id).then(function(newsPost) {
       req.body["postedByUser"] = user._id;
-      console.log(req.body);
       newsPost.comments.unshift(req.body);
       newsPost.save(function(newsPost) {
         res.status(200).json(newsPost);
@@ -90,20 +87,13 @@ function addComment(req, res) {
 }
 
 function deleteComment(req, res) {
-  console.log(req.params);
   newsPost.findById(req.params.newsPostId).then(function(newsPost) {
-    console.log("HELLO", newsPost.comments);
     newsPost.comments.forEach((c, i) => {
-      console.log("FINDING C", c._id.toString());
-      console.log("REQ", req.params.commentId);
       if (c._id.toString() == req.params.commentId.toString()) {
-        console.log("FINDING I", i);
         newsPost.comments.splice(i, 1);
-        console.log(newsPost.comments);
         newsPost.save();
       }
     });
-    // newsPost.comments.id(req.params.commentId).remove();
 
     newsPost.save(function(newsPost) {
       res.status(200).json(newsPost);

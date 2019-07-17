@@ -7,7 +7,6 @@ import userService from "../src/utils/userService";
 import HomePage from "./pages/HomePage/HomePage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LogInPage from "./pages/LogInPage/LogInPage";
-import IndexPage from "./pages/IndexPage/IndexPage";
 import WhosWhoPage from "./pages/WhosWhoPage/WhosWhoPage";
 import UserShowPage from "./pages/UserShowPage/UserShowPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
@@ -58,21 +57,6 @@ class App extends Component {
                 handleSignupOrLogin={this.handleSignupOrLogin}
               />
             )}
-          />
-          <Route
-            exact
-            path="/index"
-            render={props =>
-              userService.getUser() ? (
-                <IndexPage
-                  {...props}
-                  user={this.state.user}
-                  handleLogOut={this.handleLogOut}
-                />
-              ) : (
-                <Redirect to="/login" />
-              )
-            }
           />
           <Route
             exact

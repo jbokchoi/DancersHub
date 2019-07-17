@@ -60,7 +60,8 @@ class WhosWhoPage extends Component {
       <div>
         <NavBar handleLogOut={this.handleLogOut} />
         <div className="whos-who-page">
-          <h1>Dance Hub Members</h1>
+          <h4>who's who</h4>
+          <h1>Dancers' Hub Members</h1>
           <div className="whos-who-cards">{users}</div>
         </div>
       </div>

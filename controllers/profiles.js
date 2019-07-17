@@ -14,24 +14,16 @@ module.exports = {
 /*---- Profesional Areas Function ----*/
 
 function createProfArea(req, res) {
-  console.log("userid", req.user._id);
-  console.log("data sent", req.body);
   User.findById(req.user._id).then(function(user) {
-    console.log("userfound: ", user.profile[0].professionalAreas);
     user.profile[0].professionalAreas.push(req.body);
-    console.log("user changed ");
     return user.save(function(user) {
-      // console.log("nwe user", user);
       res.status(200).json(user);
     });
   });
 }
 
 function deleteProfArea(req, res) {
-  console.log("delete controller");
-  console.log("REQ.PARAMS", req.params);
   User.findById(req.user._id).then(function(user) {
-    console.log(user.profile[0].professionalAreas);
     user.profile[0].professionalAreas.id(req.params.id).remove();
     user.save(function(user) {
       res.status(200).json(user);
@@ -45,9 +37,7 @@ function createContactDetail(req, res) {
   console.log("userid", req.user._id);
   console.log("data sent", req.body);
   User.findById(req.user._id).then(function(user) {
-    console.log("userfound: ", req.body.contactDetail);
     user.profile[0].contactDetails.push(req.body.contactDetail);
-    console.log("user changed ");
     return user.save(function(user) {
       res.status(200).json(user);
     });

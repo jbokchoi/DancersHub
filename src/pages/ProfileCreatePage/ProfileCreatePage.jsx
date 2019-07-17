@@ -14,8 +14,6 @@ class ProfileCreatePage extends Component {
       <div>
         <NavBar handleLogOut={this.handleLogOut} />
         <ProfileForm />
-        {console.log(this.state.user)}
-        {console.log(this.props)}
       </div>
     );
   }

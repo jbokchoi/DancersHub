@@ -14,7 +14,6 @@ module.exports = {
 };
 
 async function signup(req, res) {
-  console.log("hit");
   const user = new User(req.body);
   try {
     await user.save();
@@ -46,9 +45,7 @@ async function login(req, res) {
 
 /*----- ALL User Functions ----*/
 function getAllUsers(req, res) {
-  console.log("hit");
   User.find({}).then(function(users) {
-    console.log(users);
     res.status(200).json(users);
   });
 }
@@ -63,7 +60,6 @@ function getUserProfile(req, res) {
 
 function createProfile(req, res) {
   User.findById(req.user._id).then(function(user) {
-    console.log(user);
     user.profile.unshift(req.body);
     user.save(function(user) {
       res.status(200).json(user);
