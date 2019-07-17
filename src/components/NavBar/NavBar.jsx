@@ -8,7 +8,7 @@ const NavBar = props => {
       <Link className="navbar-brand" to="/profile">
         <img
           className="navLogo"
-          src="https://i.imgur.com/1C0Ijlk.png"
+          src="https://i.imgur.com/fcBvlAD.png"
           alt="DancersHub Logo"
         />
       </Link>

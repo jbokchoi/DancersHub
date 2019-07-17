@@ -14,7 +14,7 @@ class HomePage extends Component {
       <div className="HomePage">
         <img
           className="HomePageImg"
-          src="https://i.imgur.com/W70jaOe.png"
+          src="https://i.imgur.com/fcBvlAD.png"
           alt="DH Logo"
         />
         <Link className="btn btn-default HomePageLinks" to="/signup">

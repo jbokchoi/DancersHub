@@ -1,69 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+<img src = "https://i.imgur.com/GCrWtAb.png" width="200">
+</p>
 
-## Available Scripts
+# The Dancers' Hub
 
-In the project directory, you can run:
+Where dancers come together to connect, unite and find opportunities.
 
-### `npm start`
+<a href = https://thedancershub.herokuapp.com>The Dancers' Hub</a> is a digtial space bringing dance professionals together to network and share latest news regarding the sector.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Making it easier for artists to find resources and to help independent artists find a community to further their reach.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Features:
 
-### `npm test`
+- Create and update your profile that highlights your career, provide contact details, and list where you're based
+- Find new connections by looking through the Who's Who
+- Post and share news on The Dancers' Hub Newsfeed - comment on posts and discover what's taking place in the sector
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="center">
+<img src="https://i.imgur.com/YxaabES.png" width="300">
+<img src=https://i.imgur.com/uRn94e9.png width="300">
+<img src=https://i.imgur.com/I0cSWMF.png width="300">
+<img src=https://i.imgur.com/83KyAYf.png width="300">
+<img src=https://i.imgur.com/hYO3s2W.png width="300">
+</p>
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+<p style="text-align: center;">
+<a href = https://thedancershub.herokuapp.com>The Dancers' Hub</a>
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+React | HTML5 | CSS3 | JavaScript | Node.js | Express | Mongoose | MongoDB | Bootstrap | Heroku | Adobe Photoshop | Adobe Illustrator | Adobe XD |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Next Steps
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# DancersHub
+1. Follow Dancers' Hub Members to have a bespoke homepage that curates news posts made by followed members
+2. Incorporate Google Maps API to allow users to find and search other members based on location
+3. Allow further customization of user type to include company members
+4. Add job/audtion posting capabilities
